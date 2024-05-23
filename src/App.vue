@@ -2,11 +2,10 @@
 import { ref, onMounted } from "vue";
 import DesktopNavigation from "./components/DesktopNavigation.vue";
 import MobileNavigation from "./components/MobileNavigation.vue";
-import MobileMenu from "./components/MobileMenu.vue";
 
-let isMobile = ref(Boolean);
-let isSticky = ref(false);
-const widthBreakpoint = ref(768); //value in pixels
+const isMobile = ref(Boolean); //condtional mobile/desktop navigation
+const isSticky = ref(true); //variable for nav-bar , sticky to top or not
+const widthBreakpoint = ref(768); //pixels value
 
 const checkWindowSize = () => {
   //Responsive for checking size of the browser window
@@ -26,7 +25,6 @@ onMounted(() => {
         <component :is="isMobile ? MobileNavigation : DesktopNavigation" />
       </header>
     </nav>
-    <MobileMenu />
     <router-view></router-view>
   </div>
 </template>
@@ -51,6 +49,9 @@ body {
   font-family: "Montserrat", sans-serif;
   font-optical-sizing: auto;
   font-style: normal;
+}
+#app {
+  margin-top: 70px;
 }
 
 h1,
@@ -97,5 +98,12 @@ p {
 
 img {
   max-width: 100%;
+}
+.sticky {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 999;
 }
 </style>
