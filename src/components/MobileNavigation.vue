@@ -2,6 +2,8 @@
 import { computed } from "vue";
 import { useStore } from "vuex";
 import MobileMenu from "./MobileMenu.vue";
+import CustomButton from "./CustomButton.vue";
+import HamburgerButton from "./HamburgerButton.vue";
 
 const store = useStore();
 // let isMobileMenuOpen = ref(false); //variable for mobile menu
@@ -16,6 +18,10 @@ const isHamburgerClicked = computed(() => store.state.isHamburgerClicked);
 </script>
 <template>
   <div class="mobile-navigation">
+    <HamburgerButton
+      @click="handleClick"
+      :class="{ 'hamburger-active': isHamburgerClicked }"
+    />
     <button
       class="hamburger"
       @click="handleClick"
@@ -23,6 +29,7 @@ const isHamburgerClicked = computed(() => store.state.isHamburgerClicked);
     >
       |||
     </button>
+    <CustomButton class="bg-orange">+48 513 587 427</CustomButton>
     <MobileMenu />
   </div>
 </template>
@@ -31,7 +38,7 @@ const isHamburgerClicked = computed(() => store.state.isHamburgerClicked);
 .mobile-navigation {
   position: fixed;
   width: 100%;
-  height: 70px;
+  height: 87px;
   background-color: #5858587d;
   display: flex;
   align-items: center;
@@ -40,6 +47,7 @@ const isHamburgerClicked = computed(() => store.state.isHamburgerClicked);
 }
 
 .mobile-navigation {
+  background: #002332;
   @media (min-width: 769px) {
     display: none;
   }
