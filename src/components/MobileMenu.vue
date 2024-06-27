@@ -16,11 +16,6 @@ const isHamburgerClicked = computed(() => store.state.isHamburgerClicked);
 
 <template>
   <div class="mobile-menu" :class="{ active: !isHamburgerClicked }">
-    <div class="mobile-menu__logo-wrapper">
-      <router-link to="/">
-        <span>Logo</span>
-      </router-link>
-    </div>
     <nav class="mobile-nav">
       <ul class="mobile-nav__items">
         <router-link
@@ -38,16 +33,17 @@ const isHamburgerClicked = computed(() => store.state.isHamburgerClicked);
   <div class="menu-overlay"></div>
 </template>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .mobile-menu {
   position: fixed;
-  top: 70px;
+  top: 87px;
   left: 0;
   bottom: 0;
   right: 0;
+  padding: 50px 0 0 16px;
   flex-direction: column;
   z-index: 990;
-  background: transparent;
+  background: #fafafacc;
   backdrop-filter: blur(4.5px);
   transition: transform 0.3s ease;
 }
@@ -65,5 +61,18 @@ const isHamburgerClicked = computed(() => store.state.isHamburgerClicked);
   width: 100vw;
   height: 100vh;
   backdrop-filter: blur(4.5px);
+}
+
+.mobile_nav__item {
+  margin-bottom: 30px;
+}
+a {
+  color: #002332;
+  font-family: Montserrat;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  text-transform: uppercase;
 }
 </style>
