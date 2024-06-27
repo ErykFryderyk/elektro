@@ -1,5 +1,6 @@
 <script setup>
 import { ref } from "vue";
+import LogoElectro from "../assets/svg/LogoElectro.vue";
 
 const menuItems = ref([
   { string: "Strona główna", path: "/" },
@@ -10,12 +11,11 @@ const menuItems = ref([
 </script>
 <template>
   <div class="desktop-navigation">
-    <img src="" alt="logo" />
+    <LogoElectro />
     <ul>
       <router-link
         v-for="(item, index) in menuItems"
         :key="index"
-        @click="handleClick"
         :to="item.path"
       >
         <li class="mobile_nav__item">{{ item.string }}</li>
@@ -29,7 +29,7 @@ const menuItems = ref([
   position: sticky;
   width: 100%;
   height: 80px;
-  background-color: #2e2e2ee8;
+  background: #002332;
   display: flex;
   align-items: center;
   justify-content: space-between;
