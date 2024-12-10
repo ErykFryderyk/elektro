@@ -1,7 +1,5 @@
 <template>
   <svg
-    width="320"
-    height="54"
     viewBox="0 0 320 54"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
@@ -29,3 +27,20 @@
     </defs>
   </svg>
 </template>
+
+<style lang="scss" scoped>
+svg {
+  width: 120px;
+  height: 50px;
+
+  @media (min-width: 768px) {
+    width: 150px;
+  }
+  @media (min-width: 992px) {
+    width: 200px;
+  }
+  @media (min-width: 1200px) {
+    width: 250px;
+  }
+}
+</style>

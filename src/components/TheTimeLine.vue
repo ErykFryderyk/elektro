@@ -1,0 +1,120 @@
+<script setup>
+defineProps({
+  data: Array,
+});
+</script>
+<template>
+  <div class="timeline">
+    <ul class="timeline__lists">
+      <li class="timeline__item" v-for="(item, index) in data" :key="index">
+        <h2 class="title">
+          {{ item.year }}
+        </h2>
+        <div class="underline"></div>
+        <h3 class="subtitle">{{ item.title }}</h3>
+        <p class="desc">
+          {{ item.desc }}
+        </p>
+        <img class="img" :src="srcImg" alt="" />
+      </li>
+    </ul>
+  </div>
+</template>
+
+<style lang="scss" scoped>
+ul li {
+  margin: 0;
+  padding: 0;
+}
+.timeline {
+  width: 100%;
+  margin-bottom: 50px;
+  padding-top: 50px;
+  padding-bottom: 20px;
+  position: relative;
+
+  &::before {
+    content: "";
+    width: 20px;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    bottom: 0px;
+    background: #e4e4e4;
+    transform: translateX(-50%);
+  }
+  &__item {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+
+    &:nth-child(even) {
+      align-items: end;
+    }
+  }
+}
+
+.title {
+  color: #000;
+  font-family: Montserrat;
+  font-size: 36px;
+  font-style: normal;
+  font-weight: 800;
+  line-height: normal;
+  position: relative;
+  width: 100%;
+}
+.underline {
+  width: 55%;
+  height: 24px;
+  transform: translateY(-10px);
+  background-color: #f9cb53;
+  margin-bottom: 24px;
+}
+.subtitle {
+  color: #00405b;
+  font-family: Montserrat;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+.desc {
+  color: #002332;
+  font-family: Montserrat;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  margin-bottom: 36px;
+  margin-bottom: 24px;
+}
+.img {
+  width: 100%;
+  max-width: 500px;
+  height: 194px;
+  background-color: #d9d9d9;
+  position: relative;
+  margin-bottom: 24px;
+}
+
+.timeline__item {
+  &:nth-child(odd) {
+    .title {
+      text-align: left;
+    }
+  }
+  &:nth-child(even) {
+    .title {
+      text-align: right;
+    }
+
+    .desc {
+      text-align: right;
+    }
+  }
+}
+</style>

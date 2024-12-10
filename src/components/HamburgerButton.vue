@@ -6,7 +6,6 @@
 
 <style lang="scss" scoped>
 .hamburger-button {
-  margin-left: 16px;
   width: 60px;
   height: 40px;
   background-color: transparent;

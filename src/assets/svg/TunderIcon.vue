@@ -36,3 +36,10 @@
     />
   </svg>
 </template>
+<style scoped>
+@media (min-width: 768px) {
+  .medium-no-visible {
+    display: none;
+  }
+}
+</style>

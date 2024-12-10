@@ -11,6 +11,10 @@ const menuItems = ref([
   { string: "O nas", path: "/about" },
   { string: "Kontakt", path: "/contact" },
 ]);
+const handleClick = () => {
+  //emit to the action in store
+  store.dispatch("clickHamburger");
+};
 const isHamburgerClicked = computed(() => store.state.isHamburgerClicked);
 </script>
 
@@ -23,7 +27,7 @@ const isHamburgerClicked = computed(() => store.state.isHamburgerClicked);
           :key="index"
           :to="item.path"
         >
-          <li class="mobile_nav__item">
+          <li class="mobile_nav__item" @click="handleClick">
             {{ item.string }}
           </li>
         </router-link>
