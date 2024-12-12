@@ -37,9 +37,18 @@ const menuItems = ref([
 <style lang="scss" scoped>
 .footer {
   background-color: #002332;
+  display: flex;
+  flex-direction: column;
+
+  @media (min-width:922px) {
+    display: grid;
+    grid-template-columns: .25fr .75fr;
+  }
 }
+
 .mobile-nav {
   padding: 40px 0 40px 33px;
+  grid-column: 2/3;
 }
 a {
   display: flex;
@@ -50,6 +59,7 @@ a {
   font-style: normal;
   font-weight: 500;
   line-height: normal;
+  width: 160px;
 
   .mobile_nav__item {
     margin-bottom: 24px;
@@ -58,7 +68,7 @@ a {
 .logo {
   display: flex;
   justify-content: center;
-  padding-bottom: 50px;
+  grid-column: 1/2;
 }
 .discription {
   text-align: center;

@@ -22,7 +22,7 @@ const isHamburgerClicked = computed(() => store.state.isHamburgerClicked);
       @click="handleClick"
       :class="{ 'hamburger-active': isHamburgerClicked }"
     />
-    <CustomButton class="bg-orange">+48 513 587 427</CustomButton>
+    <CustomButton class="bg-orange phone-number-button">+48 513 587 427</CustomButton>
     <MobileMenu />
   </div>
 </template>

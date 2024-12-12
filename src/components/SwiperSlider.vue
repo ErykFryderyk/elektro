@@ -7,7 +7,6 @@ import { Navigation, Pagination } from "swiper/modules";
 import PhotoSwipeLightbox from "photoswipe/lightbox";
 import "photoswipe/style.css";
 
-
 defineProps({
   slides: Array, // Zdjęcia do slidera i galerii
 });
@@ -34,7 +33,7 @@ const swiperConfig = ref({
       slidesPerView: 3,
     },
   },
-})
+});
 
 onMounted(() => {
   if (!lightbox) {
@@ -66,13 +65,12 @@ function openGallery(index) {
 <template>
   <div>
     <!-- Swiper slider -->
-    <swiper v-bind="swiperConfig"
-    >
+    <swiper v-bind="swiperConfig">
       <swiper-slide v-for="(slide, index) in slides" :key="index">
         <img
           :src="slide.thumbnailURL"
           :alt="'Slide ' + (index + 1)"
-          style="width: 100%; height: auto; cursor: pointer"
+          class="swiper-slide"
           @click="openGallery(index)"
         />
       </swiper-slide>
@@ -92,3 +90,12 @@ function openGallery(index) {
     </div>
   </div>
 </template>
+<style scoped>
+.swiper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  object-fit: cover;
+}
+</style>

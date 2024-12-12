@@ -8,6 +8,8 @@
 button {
   display: inline-flex;
   padding: 18px 20px;
+  width: 167px;
+  height: 56px;
   justify-content: center;
   align-items: center;
   color: #002332;

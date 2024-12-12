@@ -65,7 +65,7 @@ function openGallery(index) {
     </div>
     <div class="container">
       <div class="first-section">
-        <BigTunderIcon class="mobile--no-visible" />
+        <BigTunderIcon class="mobile--no-visible big-tunder-grid" />
         <h1 class="main-title header-grid">
           Usługi elektryczne na najwyższym poziomie
         </h1>
@@ -104,48 +104,48 @@ function openGallery(index) {
       <LogoElectro />
     </div>
     <div class="container">
-      <h2 class="main-title">Czym się zajmujemy</h2>
+      <h2 class="main-title main-title--small-size">Czym się zajmujemy</h2>
     </div>
     <div class="container">
       <DynamicGrid :columns="4">
         <template #column-1>
           <DynamicIconBox
             :icon="CableIcon"
-            title="Dynamiczna Ikona"
-            :list="['Instalacje elektryczne w domach i firmach 1', 'Instalacje elektryczne w domach i firmach 2', 'Instalacje elektryczne w domach i firmach 3']"
+            title="Instalacje"
+            :list="['Instalacje elektryczne w domach i firmach', 'Instalacje oświetlenia wewnętrznego i zewnętrznego', 'Instalacje odgromowe, przepięciowe i wyrównawcze']"
           />
         </template>
         <template #column-2>
           <DynamicIconBox
-            :icon="HeatIcon"
-            title="Dynamiczna Ikona"
-            :list="['Pozycja 1', 'Pozycja 2', 'Pozycja 3']"
+            :icon="ClearDayIcon"
+            title="Fotowoltaika"
+            :list="['Montaż oraz serwis instalacji fotowoltaicznych', 'Sprzedaż paneli fotowoltaicznych']"
           />
         </template>
         <template #column-3>
           <DynamicIconBox
-            :icon="ClearDayIcon"
-            title="Dynamiczna Ikona"
-            :list="['Pozycja 1', 'Pozycja 2', 'Pozycja 3']"
+            :icon="HeatIcon"
+            title="Uslugi"
+            :list="['Instalacje domofonów', 'Połączenie i instalacje urządzeń elektrycznych', 'Konserwacja i modernizacja instalacji elektrycznych']"
           />
         </template>
         <template #column-4>
           <DynamicIconBox
             :icon="AvgPaceIcon"
-            title="Dynamiczna Ikona"
-            :list="['Pozycja 1', 'Pozycja 2', 'Pozycja 3']"
+            title="Pomiary"
+            :list="['Pomiary rezystancji kabli i przewodów badania wyłączników różnicowoprądowych', 'Pomiary połączeń', 'Pomiary skutecznego samoczynnego wyłączania']"
           />
         </template>
       </DynamicGrid>
     </div>
     <div class="container">
-      <h2 class="main-title">Nasze Realizacje</h2>
+      <h2 class="main-title main-title--small-size">Nasze Realizacje</h2>
       <div style="width: 100%; background-color: #f1f1f1">
         <SwiperSlider :slides="slides" @image-click="openGallery" />
       </div>
     </div>
     <div class="container">
-      <h2 class="main-title">Skontaktuj się z nami</h2>
+      <h2 class="main-title main-title--small-size">Skontaktuj się z nami</h2>
       <p class="text">
         Jesteśmy do Twojej dyspozycji od poniedziałku do piątku w godzinach
         8.00-16.00
@@ -161,17 +161,18 @@ function openGallery(index) {
 }
 .hero {
   background-image: url("../assets/img/af6990db72693c8c4a8c981d5a92f0c3.jpeg");
-  background-position: center top;
+  background-position: center bottom;
   background-repeat: no-repeat;
   background-size: cover;
   min-height: 400px;
   display: flex;
+  padding-top: 40px;
   justify-content: center;
-  align-items: center;
   position: relative;
 
   @media (min-width: 768px) {
     background-position: center;
+    align-items: center;
   }
 
   &::after {
@@ -191,8 +192,9 @@ function openGallery(index) {
 
   @media (min-width: 768px) {
     display: grid;
-    grid-template-columns: repeat(5, 0.2fr);
+    grid-template-columns: repeat(5, 1fr);
     grid-template-rows: 1fr 1fr;
+    column-gap: 20px;
   }
 }
 
@@ -225,17 +227,24 @@ function openGallery(index) {
   background-repeat: no-repeat;
   background-size: cover;
   position: relative;
-  z-index: 1;
+  box-shadow: 0 0 13px 0px black;
+
+  @media (min-width: 922px) {
+    min-height: 477px;
+  }
 
   &::before {
     content: "";
     position: absolute;
-    z-index: -1;
     background: #f0c85e;
     bottom: 0;
-    height: 332px;
-    width: 20px;
+    height: 330px;
+    width: 12px;
     left: -12px;
+
+    @media (min-width: 922px) {
+      height: 400px;
+    }
   }
   &--mobile-visbile {
     @media (min-width: 992px) {

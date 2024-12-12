@@ -38,7 +38,7 @@
 </template>
 
 <style lang="scss" scoped>
-.mobile-no-visible{
+.mobile--no-visible{
   @media (max-width: 768px) {
     display: none;
   }
