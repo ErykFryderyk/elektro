@@ -1,5 +1,7 @@
 <script setup>
-import { ref } from "vue";
+import { ref, onMounted, onUnmounted } from 'vue';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import CustomButton from "@/components/CustomButton.vue";
 import TunderIcon from "../assets/svg/TunderIcon.vue";
 import LogoElectro from "../assets/svg/LogoElectro.vue";
@@ -17,6 +19,10 @@ import HeatIcon from "@/assets/svg/HeatIcon.vue";
 import ClearDayIcon from "@/assets/svg/ClearDayIcon.vue";
 import AvgPaceIcon from "@/assets/svg/AvgPaceIcon.vue";
 
+//Mount ScrollTrigger
+gsap.registerPlugin(ScrollTrigger);
+
+const trigger = ref(".trigger"); // Referencja do elementu
 const activeIndex = ref(null);
 const slides = ref([
   {
@@ -57,6 +63,55 @@ function openGallery(index) {
   activeIndex.value = index;
   console.log(activeIndex.value);
 }
+
+onMounted(() => {
+      // Ustawienia responsywnych animacji z użyciem matchMedia
+      ScrollTrigger.matchMedia({
+        // Warunek dla dużych ekranów (np. min-width: 768px)
+        '(min-width: 768px)': function () {
+          gsap.fromTo(trigger.value, {
+            y: '+=100',
+            opacity:0,
+            duration: 1
+          }, 
+          {
+            y: 0,
+            opacity: 1,
+            scrollTrigger: {
+              trigger: trigger.value,
+              start: 'top 80%',
+              end: '20% 50%',
+              scrub: true,
+              markers: true,
+            },
+          });
+        },
+
+        // Warunek dla małych ekranów (np. max-width: 767px)
+        '(max-width: 767px)': function () {
+          gsap.fromTo(trigger.value, {
+            x: '-=100',// Mniejsze przesunięcie na małych ekranach
+            opacity: 0,
+            duration: 2
+          },
+          {
+            x:0,
+            opacity: 1,
+            duration: 1,
+            scrollTrigger: {
+              trigger: trigger.value,
+              start: 'top 100%',
+              markers: true,
+            },
+          });
+        },
+      });
+    });
+
+    onUnmounted(() => {
+      // Usunięcie wszystkich instancji ScrollTrigger, aby uniknąć wycieków pamięci
+      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+    });
 </script>
 <template>
   <div class="home">
@@ -110,30 +165,46 @@ function openGallery(index) {
       <DynamicGrid :columns="4">
         <template #column-1>
           <DynamicIconBox
+            class="trigger"
             :icon="CableIcon"
             title="Instalacje"
-            :list="['Instalacje elektryczne w domach i firmach', 'Instalacje oświetlenia wewnętrznego i zewnętrznego', 'Instalacje odgromowe, przepięciowe i wyrównawcze']"
+            :list="[
+              'Instalacje elektryczne w domach i firmach',
+              'Instalacje oświetlenia wewnętrznego i zewnętrznego',
+              'Instalacje odgromowe, przepięciowe i wyrównawcze',
+            ]"
           />
         </template>
         <template #column-2>
           <DynamicIconBox
             :icon="ClearDayIcon"
             title="Fotowoltaika"
-            :list="['Montaż oraz serwis instalacji fotowoltaicznych', 'Sprzedaż paneli fotowoltaicznych']"
+            :list="[
+              'Montaż oraz serwis instalacji fotowoltaicznych',
+              'Sprzedaż paneli fotowoltaicznych',
+            ]"
           />
         </template>
         <template #column-3>
           <DynamicIconBox
             :icon="HeatIcon"
             title="Uslugi"
-            :list="['Instalacje domofonów', 'Połączenie i instalacje urządzeń elektrycznych', 'Konserwacja i modernizacja instalacji elektrycznych']"
+            :list="[
+              'Instalacje domofonów',
+              'Połączenie i instalacje urządzeń elektrycznych',
+              'Konserwacja i modernizacja instalacji elektrycznych',
+            ]"
           />
         </template>
         <template #column-4>
           <DynamicIconBox
             :icon="AvgPaceIcon"
             title="Pomiary"
-            :list="['Pomiary rezystancji kabli i przewodów badania wyłączników różnicowoprądowych', 'Pomiary połączeń', 'Pomiary skutecznego samoczynnego wyłączania']"
+            :list="[
+              'Pomiary rezystancji kabli i przewodów badania wyłączników różnicowoprądowych',
+              'Pomiary połączeń',
+              'Pomiary skutecznego samoczynnego wyłączania',
+            ]"
           />
         </template>
       </DynamicGrid>
