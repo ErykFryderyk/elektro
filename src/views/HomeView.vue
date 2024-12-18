@@ -1,14 +1,7 @@
 <script setup>
-<<<<<<< Updated upstream
 import { ref, onMounted, onUnmounted } from 'vue';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-=======
-import { ref, onMounted, onUnmounted} from "vue";
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-
->>>>>>> Stashed changes
 import CustomButton from "@/components/CustomButton.vue";
 import TunderIcon from "../assets/svg/TunderIcon.vue";
 import LogoElectro from "../assets/svg/LogoElectro.vue";
@@ -26,45 +19,10 @@ import HeatIcon from "@/assets/svg/HeatIcon.vue";
 import ClearDayIcon from "@/assets/svg/ClearDayIcon.vue";
 import AvgPaceIcon from "@/assets/svg/AvgPaceIcon.vue";
 
-<<<<<<< Updated upstream
-//Mount ScrollTrigger
+//Mount ScrollTrigger plugin 
 gsap.registerPlugin(ScrollTrigger);
 
-const trigger = ref(".trigger"); // Referencja do elementu
-=======
-// Rejestracja wtyczki ScrollTrigger
-gsap.registerPlugin(ScrollTrigger);
-
->>>>>>> Stashed changes
 const activeIndex = ref(null);
-const box = ref(".box"); // Referencja do elementu
-
-onMounted(() => {
-      // Inicjalizacja animacji GSAP po zamontowaniu komponentu
-      gsap.fromTo(box.value, {
-        y: '+=100', 
-        opacity: 0
-      }, 
-      {
-        y: 0,
-        opacity: 1,
-        stagger: .2,
-        duration: .5,
-        scrollTrigger: {
-          trigger: box.value, // Element wyzwalający animację
-          start: '-50% 50%',   // Początek animacji, gdy górna krawędź elementu jest na 80% wysokości okna
-          // end: 'top 20%',     // Koniec animacji, gdy element osiągnie 20% wysokości okna
-          scrub: true,        // Synchronizacja animacji z przewijaniem
-          markers: true       // Znaczniki pomocnicze (do debugowania)
-        }
-      });
-    });
-
-    onUnmounted(() => {
-      // Usunięcie wszystkich instancji ScrollTrigger, aby uniknąć wycieków pamięci
-      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
-    });
-
 const slides = ref([
   {
     largeURL:
@@ -106,53 +64,68 @@ function openGallery(index) {
 }
 
 onMounted(() => {
-      // Ustawienia responsywnych animacji z użyciem matchMedia
-      ScrollTrigger.matchMedia({
-        // Warunek dla dużych ekranów (np. min-width: 768px)
-        '(min-width: 768px)': function () {
-          gsap.fromTo(trigger.value, {
-            y: '+=100',
-            opacity:0,
-            duration: 1
-          }, 
+  const animatedItems = document.querySelectorAll('.trigger');
+
+  // Ustawienia responsywnych animacji z użyciem matchMedia
+  ScrollTrigger.matchMedia({
+    // Warunek dla dużych ekranów (np. min-width: 768px)
+    '(min-width: 768px)': function () {
+      animatedItems.forEach((item, index) => {
+        gsap.fromTo(
+          item,
+          {
+            y: '+=50',
+            opacity: 0,
+          },
           {
             y: 0,
             opacity: 1,
+            duration: 1,
             scrollTrigger: {
-              trigger: trigger.value,
+              trigger: item,
               start: 'top 80%',
-              end: '20% 50%',
+              end: 'bottom 80%',
               scrub: true,
               markers: true,
+              id: `large-${index + 1}`,
             },
-          });
-        },
+          }
+        );
+      });
+    },
 
-        // Warunek dla małych ekranów (np. max-width: 767px)
-        '(max-width: 767px)': function () {
-          gsap.fromTo(trigger.value, {
-            x: '-=100',// Mniejsze przesunięcie na małych ekranach
+    // Warunek dla małych ekranów (np. max-width: 767px)
+    '(max-width: 767px)': function () {
+      animatedItems.forEach((item, index) => {
+        gsap.fromTo(
+          item,
+          {
+            x: '-=100', // Mniejsze przesunięcie na małych ekranach
             opacity: 0,
-            duration: 2
           },
           {
-            x:0,
+            x: 0,
             opacity: 1,
             duration: 1,
             scrollTrigger: {
-              trigger: trigger.value,
-              start: 'top 100%',
+              trigger: item,
+              start: 'top 80%',
+              end: 'top 50%',
+              scrub: true,
               markers: true,
+              id: `small-${index + 1}`,
             },
-          });
-        },
+          }
+        );
       });
-    });
+    },
+  });
+});
 
-    onUnmounted(() => {
-      // Usunięcie wszystkich instancji ScrollTrigger, aby uniknąć wycieków pamięci
-      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
-    });
+onUnmounted(() => {
+  // Usunięcie wszystkich instancji ScrollTrigger, aby uniknąć wycieków pamięci
+  ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+});
 </script>
 <template>
   <div class="home">
@@ -206,11 +179,7 @@ onMounted(() => {
       <DynamicGrid :columns="4">
         <template #column-1>
           <DynamicIconBox
-<<<<<<< Updated upstream
             class="trigger"
-=======
-            class="box"
->>>>>>> Stashed changes
             :icon="CableIcon"
             title="Instalacje"
             :list="[
@@ -222,7 +191,7 @@ onMounted(() => {
         </template>
         <template #column-2>
           <DynamicIconBox
-            class="box"
+            class="trigger"
             :icon="ClearDayIcon"
             title="Fotowoltaika"
             :list="[
@@ -233,7 +202,7 @@ onMounted(() => {
         </template>
         <template #column-3>
           <DynamicIconBox
-            class="box"
+            class="trigger"
             :icon="HeatIcon"
             title="Uslugi"
             :list="[
@@ -245,7 +214,7 @@ onMounted(() => {
         </template>
         <template #column-4>
           <DynamicIconBox
-            class="box"
+            class="trigger"
             :icon="AvgPaceIcon"
             title="Pomiary"
             :list="[
