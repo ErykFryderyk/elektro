@@ -1,7 +1,14 @@
 <script setup>
+<<<<<<< Updated upstream
 import { ref, onMounted, onUnmounted } from 'vue';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+=======
+import { ref, onMounted, onUnmounted} from "vue";
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+>>>>>>> Stashed changes
 import CustomButton from "@/components/CustomButton.vue";
 import TunderIcon from "../assets/svg/TunderIcon.vue";
 import LogoElectro from "../assets/svg/LogoElectro.vue";
@@ -19,11 +26,45 @@ import HeatIcon from "@/assets/svg/HeatIcon.vue";
 import ClearDayIcon from "@/assets/svg/ClearDayIcon.vue";
 import AvgPaceIcon from "@/assets/svg/AvgPaceIcon.vue";
 
+<<<<<<< Updated upstream
 //Mount ScrollTrigger
 gsap.registerPlugin(ScrollTrigger);
 
 const trigger = ref(".trigger"); // Referencja do elementu
+=======
+// Rejestracja wtyczki ScrollTrigger
+gsap.registerPlugin(ScrollTrigger);
+
+>>>>>>> Stashed changes
 const activeIndex = ref(null);
+const box = ref(".box"); // Referencja do elementu
+
+onMounted(() => {
+      // Inicjalizacja animacji GSAP po zamontowaniu komponentu
+      gsap.fromTo(box.value, {
+        y: '+=100', 
+        opacity: 0
+      }, 
+      {
+        y: 0,
+        opacity: 1,
+        stagger: .2,
+        duration: .5,
+        scrollTrigger: {
+          trigger: box.value, // Element wyzwalający animację
+          start: '-50% 50%',   // Początek animacji, gdy górna krawędź elementu jest na 80% wysokości okna
+          // end: 'top 20%',     // Koniec animacji, gdy element osiągnie 20% wysokości okna
+          scrub: true,        // Synchronizacja animacji z przewijaniem
+          markers: true       // Znaczniki pomocnicze (do debugowania)
+        }
+      });
+    });
+
+    onUnmounted(() => {
+      // Usunięcie wszystkich instancji ScrollTrigger, aby uniknąć wycieków pamięci
+      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+    });
+
 const slides = ref([
   {
     largeURL:
@@ -165,7 +206,11 @@ onMounted(() => {
       <DynamicGrid :columns="4">
         <template #column-1>
           <DynamicIconBox
+<<<<<<< Updated upstream
             class="trigger"
+=======
+            class="box"
+>>>>>>> Stashed changes
             :icon="CableIcon"
             title="Instalacje"
             :list="[
@@ -177,6 +222,7 @@ onMounted(() => {
         </template>
         <template #column-2>
           <DynamicIconBox
+            class="box"
             :icon="ClearDayIcon"
             title="Fotowoltaika"
             :list="[
@@ -187,6 +233,7 @@ onMounted(() => {
         </template>
         <template #column-3>
           <DynamicIconBox
+            class="box"
             :icon="HeatIcon"
             title="Uslugi"
             :list="[
@@ -198,6 +245,7 @@ onMounted(() => {
         </template>
         <template #column-4>
           <DynamicIconBox
+            class="box"
             :icon="AvgPaceIcon"
             title="Pomiary"
             :list="[
@@ -348,4 +396,10 @@ onMounted(() => {
 .vue-light-gallery {
   z-index: 1050;
 }
+// .box {
+//   width: 100px;
+//   height: 100px;
+//   background-color: lightcoral;
+//   margin: 50px 0;
+// }
 </style>
