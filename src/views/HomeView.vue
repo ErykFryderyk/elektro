@@ -1,7 +1,6 @@
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue';
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useScrollAnimations, clearScrollTriggers } from '@/assets/utils/useScrollAnimations';
 import CustomButton from "@/components/CustomButton.vue";
 import TunderIcon from "../assets/svg/TunderIcon.vue";
 import LogoElectro from "../assets/svg/LogoElectro.vue";
@@ -19,8 +18,6 @@ import HeatIcon from "@/assets/svg/HeatIcon.vue";
 import ClearDayIcon from "@/assets/svg/ClearDayIcon.vue";
 import AvgPaceIcon from "@/assets/svg/AvgPaceIcon.vue";
 
-//Mount ScrollTrigger plugin 
-gsap.registerPlugin(ScrollTrigger);
 
 const activeIndex = ref(null);
 const slides = ref([
@@ -64,68 +61,15 @@ function openGallery(index) {
 }
 
 onMounted(() => {
-  const animatedItems = document.querySelectorAll('.trigger');
-
-  // Ustawienia responsywnych animacji z użyciem matchMedia
-  ScrollTrigger.matchMedia({
-    // Warunek dla dużych ekranów (np. min-width: 768px)
-    '(min-width: 768px)': function () {
-      animatedItems.forEach((item, index) => {
-        gsap.fromTo(
-          item,
-          {
-            y: '+=50',
-            opacity: 0,
-          },
-          {
-            y: 0,
-            opacity: 1,
-            duration: 1,
-            scrollTrigger: {
-              trigger: item,
-              start: 'top 80%',
-              end: 'bottom 80%',
-              scrub: true,
-              markers: true,
-              id: `large-${index + 1}`,
-            },
-          }
-        );
-      });
-    },
-
-    // Warunek dla małych ekranów (np. max-width: 767px)
-    '(max-width: 767px)': function () {
-      animatedItems.forEach((item, index) => {
-        gsap.fromTo(
-          item,
-          {
-            x: '-=100', // Mniejsze przesunięcie na małych ekranach
-            opacity: 0,
-          },
-          {
-            x: 0,
-            opacity: 1,
-            duration: 1,
-            scrollTrigger: {
-              trigger: item,
-              start: 'top 80%',
-              end: 'top 50%',
-              scrub: true,
-              markers: true,
-              id: `small-${index + 1}`,
-            },
-          }
-        );
-      });
-    },
-  });
+  // Wywołanie funkcji z selektorem elementów do animacji
+  useScrollAnimations('.trigger');
 });
 
 onUnmounted(() => {
-  // Usunięcie wszystkich instancji ScrollTrigger, aby uniknąć wycieków pamięci
-  ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+  // Czyszczenie instancji ScrollTrigger po zniszczeniu komponentu
+  clearScrollTriggers();
 });
+
 </script>
 <template>
   <div class="home">
