@@ -8,7 +8,7 @@
 button {
   display: inline-flex;
   padding: 18px 20px;
-  width: 167px;
+  width: auto;
   height: 56px;
   justify-content: center;
   align-items: center;
