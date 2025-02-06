@@ -1,6 +1,6 @@
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue';
-import { useScrollAnimations, clearScrollTriggers } from '@/assets/utils/useScrollAnimations';
+import { useScrollAnimations, clearScrollTriggers, slideInFrom } from '@/assets/utils/useScrollAnimations';
 import CustomButton from "@/components/CustomButton.vue";
 import TunderIcon from "../assets/svg/TunderIcon.vue";
 import LogoElectro from "../assets/svg/LogoElectro.vue";
@@ -62,7 +62,8 @@ function openGallery(index) {
 
 onMounted(() => {
   // Wywołanie funkcji z selektorem elementów do animacji
-  useScrollAnimations('.trigger');
+  useScrollAnimations('.slide-up');
+  slideInFrom('.slide-in');
 });
 
 onUnmounted(() => {
@@ -78,7 +79,7 @@ onUnmounted(() => {
     </div>
     <div class="container">
       <div class="first-section">
-        <BigTunderIcon class="mobile--no-visible big-tunder-grid" />
+        <BigTunderIcon class="mobile--no-visible big-tunder-grid slide-up" />
         <h1 class="main-title header-grid">
           Usługi elektryczne na najwyższym poziomie
         </h1>
@@ -90,21 +91,23 @@ onUnmounted(() => {
     <div class="container">
       <SplitSection>
         <template #left>
-          <h2 class="title title--h2 title--bold title--mb">Elektro</h2>
-          <p class="text">
-            Firma Elektro istnieje od 2010 roku. Oferujemy szeroki wachlarz
-            usług, począwszy od wykonania modernizacji, czy rozbudowy instalacji
-            elektrycznych, po montaż domofonów, alarmów, telewizji przemysłowej
-            a skończywszy na składaniu rozdzielni. Mim o, iż jesteśmy młodą
-            firmą realizowaliśmy wiele zleceń na terenie Konina i okolic.
-            Dokładamy wszelkich starań, aby klient był usatysfakcjonowany ze
-            współpracy z nami. Największy nacisk kładziemy na dokładność i
-            terminowość wykonywanych prac. Dążymy do rozwoju firmy oraz
-            podnoszenia jakości świadczonych usług. Posiadamy potrzebne
-            kwalifikacje, uprawnienia, licencje oraz niezbędne przy pracy
-            elektryka doświadczenie
-          </p>
-          <CustomButton class="bg-granat">Sprawdź naszą ofertę</CustomButton>
+          <div class="" style="display: flex; flex-direction: column; justify-content: center; height: 100%; ">
+            <h2 class="title title--h2 title--bold title--mb slide-in">Elektro</h2>
+            <p class="text slide-in">
+              Firma Elektro istnieje od 2010 roku. Oferujemy szeroki wachlarz
+              usług, począwszy od wykonania modernizacji, czy rozbudowy instalacji
+              elektrycznych, po montaż domofonów, alarmów, telewizji przemysłowej
+              a skończywszy na składaniu rozdzielni. Mim o, iż jesteśmy młodą
+              firmą realizowaliśmy wiele zleceń na terenie Konina i okolic.
+              Dokładamy wszelkich starań, aby klient był usatysfakcjonowany ze
+              współpracy z nami. Największy nacisk kładziemy na dokładność i
+              terminowość wykonywanych prac. Dążymy do rozwoju firmy oraz
+              podnoszenia jakości świadczonych usług. Posiadamy potrzebne
+              kwalifikacje, uprawnienia, licencje oraz niezbędne przy pracy
+              elektryka doświadczenie
+            </p>
+            <CustomButton class="bg-granat">Sprawdź naszą ofertę</CustomButton>
+          </div>
         </template>
         <template #right>
           <div class="image image--deskop-visible">
@@ -117,13 +120,13 @@ onUnmounted(() => {
       <LogoElectro />
     </div>
     <div class="container">
-      <h2 class="main-title main-title--small-size">Czym się zajmujemy</h2>
+      <h2 class="main-title main-title--small-size slide-in">Czym się zajmujemy</h2>
     </div>
     <div class="container">
       <DynamicGrid :columns="4">
         <template #column-1>
           <DynamicIconBox
-            class="trigger"
+            class="slide-up"
             :icon="CableIcon"
             title="Instalacje"
             :list="[
@@ -135,7 +138,7 @@ onUnmounted(() => {
         </template>
         <template #column-2>
           <DynamicIconBox
-            class="trigger"
+            class="slide-up"
             :icon="ClearDayIcon"
             title="Fotowoltaika"
             :list="[
@@ -146,7 +149,7 @@ onUnmounted(() => {
         </template>
         <template #column-3>
           <DynamicIconBox
-            class="trigger"
+            class="slide-up"
             :icon="HeatIcon"
             title="Uslugi"
             :list="[
@@ -158,7 +161,7 @@ onUnmounted(() => {
         </template>
         <template #column-4>
           <DynamicIconBox
-            class="trigger"
+            class="slide-up"
             :icon="AvgPaceIcon"
             title="Pomiary"
             :list="[
@@ -171,13 +174,13 @@ onUnmounted(() => {
       </DynamicGrid>
     </div>
     <div class="container">
-      <h2 class="main-title main-title--small-size">Nasze Realizacje</h2>
-      <div style="width: 100%; background-color: #f1f1f1">
+      <h2 class="main-title main-title--small-size slide-in">Nasze Realizacje</h2>
+      <div class="slide-up" style="width: 100%; background-color: #f1f1f1">
         <SwiperSlider :slides="slides" @image-click="openGallery" />
       </div>
     </div>
     <div class="container">
-      <h2 class="main-title main-title--small-size">Skontaktuj się z nami</h2>
+      <h2 class="main-title main-title--small-size slide-in">Skontaktuj się z nami</h2>
       <p class="text">
         Jesteśmy do Twojej dyspozycji od poniedziałku do piątku w godzinach
         8.00-16.00
