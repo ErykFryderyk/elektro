@@ -1,5 +1,6 @@
 <script setup>
-import { ref } from "vue";
+import { ref, onMounted, onUnmounted } from 'vue';
+import { useScrollAnimations, clearScrollTriggers, slideInFrom } from '@/assets/utils/useScrollAnimations';
 import CustomButton from "@/components/CustomButton.vue";
 import TunderIcon from "../assets/svg/TunderIcon.vue";
 import LogoElectro from "../assets/svg/LogoElectro.vue";
@@ -57,6 +58,18 @@ function openGallery(index) {
   activeIndex.value = index;
   console.log(activeIndex.value);
 }
+
+onMounted(() => {
+  // Wywołanie funkcji z selektorem elementów do animacji
+  useScrollAnimations('.slide-up');
+  slideInFrom('.slide-in');
+});
+
+onUnmounted(() => {
+  // Czyszczenie instancji ScrollTrigger po zniszczeniu komponentu
+  clearScrollTriggers();
+});
+
 </script>
 <template>
   <div class="home">
@@ -65,7 +78,7 @@ function openGallery(index) {
     </div>
     <div class="container">
       <div class="first-section">
-        <BigTunderIcon class="mobile--no-visible" />
+        <BigTunderIcon class="mobile--no-visible big-tunder-grid slide-up" />
         <h1 class="main-title header-grid">
           Usługi elektryczne na najwyższym poziomie
         </h1>
@@ -77,21 +90,23 @@ function openGallery(index) {
     <div class="container">
       <SplitSection>
         <template #left>
-          <h2 class="title title--h2 title--bold title--mb">Elektro</h2>
-          <p class="text">
-            Firma Elektro istnieje od 2010 roku. Oferujemy szeroki wachlarz
-            usług, począwszy od wykonania modernizacji, czy rozbudowy instalacji
-            elektrycznych, po montaż domofonów, alarmów, telewizji przemysłowej
-            a skończywszy na składaniu rozdzielni. Mim o, iż jesteśmy młodą
-            firmą realizowaliśmy wiele zleceń na terenie Konina i okolic.
-            Dokładamy wszelkich starań, aby klient był usatysfakcjonowany ze
-            współpracy z nami. Największy nacisk kładziemy na dokładność i
-            terminowość wykonywanych prac. Dążymy do rozwoju firmy oraz
-            podnoszenia jakości świadczonych usług. Posiadamy potrzebne
-            kwalifikacje, uprawnienia, licencje oraz niezbędne przy pracy
-            elektryka doświadczenie
-          </p>
-          <CustomButton class="bg-granat">Sprawdź naszą ofertę</CustomButton>
+          <div class="" style="display: flex; flex-direction: column; justify-content: center; height: 100%; ">
+            <h2 class="title title--h2 title--bold title--mb slide-in">Elektro</h2>
+            <p class="text slide-in">
+              Firma Elektro istnieje od 2010 roku. Oferujemy szeroki wachlarz
+              usług, począwszy od wykonania modernizacji, czy rozbudowy instalacji
+              elektrycznych, po montaż domofonów, alarmów, telewizji przemysłowej
+              a skończywszy na składaniu rozdzielni. Mim o, iż jesteśmy młodą
+              firmą realizowaliśmy wiele zleceń na terenie Konina i okolic.
+              Dokładamy wszelkich starań, aby klient był usatysfakcjonowany ze
+              współpracy z nami. Największy nacisk kładziemy na dokładność i
+              terminowość wykonywanych prac. Dążymy do rozwoju firmy oraz
+              podnoszenia jakości świadczonych usług. Posiadamy potrzebne
+              kwalifikacje, uprawnienia, licencje oraz niezbędne przy pracy
+              elektryka doświadczenie
+            </p>
+            <CustomButton class="bg-granat">Sprawdź naszą ofertę</CustomButton>
+          </div>
         </template>
         <template #right>
           <div class="image image--deskop-visible">
@@ -104,48 +119,67 @@ function openGallery(index) {
       <LogoElectro />
     </div>
     <div class="container">
-      <h2 class="main-title">Czym się zajmujemy</h2>
+      <h2 class="main-title main-title--small-size slide-in">Czym się zajmujemy</h2>
     </div>
     <div class="container">
       <DynamicGrid :columns="4">
         <template #column-1>
           <DynamicIconBox
+            class="slide-up"
             :icon="CableIcon"
-            title="Dynamiczna Ikona"
-            :list="['Instalacje elektryczne w domach i firmach 1', 'Instalacje elektryczne w domach i firmach 2', 'Instalacje elektryczne w domach i firmach 3']"
+            title="Instalacje"
+            :list="[
+              'Instalacje elektryczne w domach i firmach',
+              'Instalacje oświetlenia wewnętrznego i zewnętrznego',
+              'Instalacje odgromowe, przepięciowe i wyrównawcze',
+            ]"
           />
         </template>
         <template #column-2>
           <DynamicIconBox
-            :icon="HeatIcon"
-            title="Dynamiczna Ikona"
-            :list="['Pozycja 1', 'Pozycja 2', 'Pozycja 3']"
+            class="slide-up"
+            :icon="ClearDayIcon"
+            title="Fotowoltaika"
+            :list="[
+              'Montaż oraz serwis instalacji fotowoltaicznych',
+              'Sprzedaż paneli fotowoltaicznych',
+            ]"
           />
         </template>
         <template #column-3>
           <DynamicIconBox
-            :icon="ClearDayIcon"
-            title="Dynamiczna Ikona"
-            :list="['Pozycja 1', 'Pozycja 2', 'Pozycja 3']"
+            class="slide-up"
+            :icon="HeatIcon"
+            title="Uslugi"
+            :list="[
+              'Instalacje domofonów',
+              'Połączenie i instalacje urządzeń elektrycznych',
+              'Konserwacja i modernizacja instalacji elektrycznych',
+            ]"
           />
         </template>
         <template #column-4>
           <DynamicIconBox
+            class="slide-up"
             :icon="AvgPaceIcon"
-            title="Dynamiczna Ikona"
-            :list="['Pozycja 1', 'Pozycja 2', 'Pozycja 3']"
+            title="Pomiary"
+            :list="[
+              'Pomiary rezystancji kabli i przewodów badania wyłączników różnicowoprądowych',
+              'Pomiary połączeń',
+              'Pomiary skutecznego samoczynnego wyłączania',
+            ]"
           />
         </template>
       </DynamicGrid>
     </div>
     <div class="container">
-      <h2 class="main-title">Nasze Realizacje</h2>
-      <div style="width: 100%; background-color: #f1f1f1">
+      <h2 class="main-title main-title--small-size slide-in">Nasze Realizacje</h2>
+      <div class="slide-up" style="width: 100%; background-color: #f1f1f1">
         <SwiperSlider :slides="slides" @image-click="openGallery" />
       </div>
     </div>
     <div class="container">
-      <h2 class="main-title">Skontaktuj się z nami</h2>
+      <h2 class="main-title main-title--small-size slide-in">Skontaktuj się z nami</h2>
       <p class="text">
         Jesteśmy do Twojej dyspozycji od poniedziałku do piątku w godzinach
         8.00-16.00
@@ -161,17 +195,18 @@ function openGallery(index) {
 }
 .hero {
   background-image: url("../assets/img/af6990db72693c8c4a8c981d5a92f0c3.jpeg");
-  background-position: center top;
+  background-position: center bottom;
   background-repeat: no-repeat;
   background-size: cover;
   min-height: 400px;
   display: flex;
+  padding-top: 40px;
   justify-content: center;
-  align-items: center;
   position: relative;
 
   @media (min-width: 768px) {
     background-position: center;
+    align-items: center;
   }
 
   &::after {
@@ -191,8 +226,9 @@ function openGallery(index) {
 
   @media (min-width: 768px) {
     display: grid;
-    grid-template-columns: repeat(5, 0.2fr);
+    grid-template-columns: repeat(5, 1fr);
     grid-template-rows: 1fr 1fr;
+    column-gap: 20px;
   }
 }
 
@@ -225,17 +261,24 @@ function openGallery(index) {
   background-repeat: no-repeat;
   background-size: cover;
   position: relative;
-  z-index: 1;
+  box-shadow: 0 0 13px 0px black;
+
+  @media (min-width: 922px) {
+    min-height: 477px;
+  }
 
   &::before {
     content: "";
     position: absolute;
-    z-index: -1;
     background: #f0c85e;
     bottom: 0;
-    height: 332px;
-    width: 20px;
+    height: 330px;
+    width: 12px;
     left: -12px;
+
+    @media (min-width: 922px) {
+      height: 400px;
+    }
   }
   &--mobile-visbile {
     @media (min-width: 992px) {
@@ -268,4 +311,10 @@ function openGallery(index) {
 .vue-light-gallery {
   z-index: 1050;
 }
+// .box {
+//   width: 100px;
+//   height: 100px;
+//   background-color: lightcoral;
+//   margin: 50px 0;
+// }
 </style>

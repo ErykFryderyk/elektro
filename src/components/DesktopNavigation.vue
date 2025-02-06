@@ -38,7 +38,7 @@ const menuItems = ref([
 .desktop-navigation {
   position: sticky;
   width: 100%;
-  height: 80px;
+  height: 90px;
   background: #002332;
   display: flex;
   align-items: center;

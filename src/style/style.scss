@@ -69,9 +69,8 @@ button {
 
 .container {
   width: 100%;
-  margin: 40px auto;
-  padding-left: 15px;
-  padding-right: 15px;
+  margin: 0px auto;
+  padding: 20px 15px;
 
   &--inline{
     display: flex;
@@ -80,6 +79,7 @@ button {
 
   @media (min-width: 768px) {
     width: 750px;
+    margin: 40px auto;
   }
 
   @media (min-width: 992px) {
@@ -114,8 +114,32 @@ button {
   margin-bottom: 40px;
   z-index: 0;
 
+  @media (min-width: 768px) {
+    font-size: 39px;
+    display: flex; 
+    align-items: center;
+    max-width: 550px;
+  }
+
   @media (min-width: 992px) {
     font-size: 48px;
+    max-width: 650px;
+  }
+
+  &--small-size{
+    font-size: 24px;
+
+    @media (min-width: 768px) {
+      font-size: 26px;
+      display: flex; 
+      align-items: center;
+      max-width: 300px
+    }
+  
+    @media (min-width: 992px) {
+      font-size: 30px;
+      max-width: 350px;
+    }
   }
 
   &::after {

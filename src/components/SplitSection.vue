@@ -25,9 +25,12 @@ defineProps({
 /* Main style of the section */
 .split-section {
   display: flex;
-  align-items: center;
   gap: 20px; /* Odstęp między sekcjami */
-  padding: 40px 20px;
+  padding: 0px 20px;
+}
+
+.split-section__left {
+  align-items: center;
 }
 
 /* Każda z połówek */

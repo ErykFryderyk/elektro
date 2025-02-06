@@ -1,6 +1,22 @@
 <script setup>
+import { ref, onMounted, onUnmounted } from 'vue';
+import { useScrollAnimations, clearScrollTriggers, slideInFrom } from '@/assets/utils/useScrollAnimations';
+
 import FooterElektro from "../components/FooterElektro.vue";
 import CustomButton from "@/components/CustomButton.vue";
+import SplitSection from "@/components/SplitSection.vue";
+
+
+onMounted(() => {
+  // Wywołanie funkcji z selektorem elementów do animacji
+  useScrollAnimations('.slide-up');
+  slideInFrom('.slide-in');
+});
+
+onUnmounted(() => {
+  // Czyszczenie instancji ScrollTrigger po zniszczeniu komponentu
+  clearScrollTriggers();
+});
 </script>
 <template>
   <div class="contact">
@@ -12,29 +28,36 @@ import CustomButton from "@/components/CustomButton.vue";
           </p>
         </div>
         <!-- eslint-disable-next-line -->
-        <h1 class="title title--h2 title--bold">Skantaktuj się z nami!</h1>
+        <h1 class="title title--h2 title--bold slide-in">Skantaktuj się z nami!</h1>
         <div class="underline underline--mb"></div>
-        <div class="image-wrapper">
-          <div class="rectangle rectangle--yellow"></div>
-          <img
-            src="../assets/img/b1e7971b36ecdc1ce6b2446a2fbea119.jpeg"
-            alt="contact-hero-image"
-          />
-        </div>
-
-        <h2 class="title title--h2 title--uppercase title-small title--medium">
-          Szybko odbieramy telefony!
-        </h2>
-        <h2
-          class="title title--h2 title--uppercase title--small title--medium title--gray title-mb"
-        >
-          Ale tylko od klientów
-        </h2>
-        <!-- eslint-disable-next-line -->
-        <p class="text">
-          Jesteśmy dostępni pod telefonem od poniedziałku do soboty od godziny
-          8.00 - 19.00. Chyba, ze coś pilnego, to wtedy tak samo.
-        </p>
+        <SplitSection>
+          <template #right>
+            <div class="image-wrapper">
+              <div class="rectangle rectangle--yellow"></div>
+              <img
+                src="../assets/img/b1e7971b36ecdc1ce6b2446a2fbea119.jpeg"
+                alt="contact-hero-image"
+              />
+            </div>
+          </template>
+          <template #left>
+            <h2
+              class="title title--h2 title--uppercase title-small title--medium"
+            >
+              Szybko odbieramy telefony!
+            </h2>
+            <h2
+              class="title title--h2 title--uppercase title--small title--medium title--gray title-mb"
+            >
+              Ale tylko od klientów
+            </h2>
+            <!-- eslint-disable-next-line -->
+            <p class="text">
+              Jesteśmy dostępni pod telefonem od poniedziałku do soboty od
+              godziny 8.00 - 19.00. Chyba, ze coś pilnego, to wtedy tak samo.
+            </p>
+          </template>
+        </SplitSection>
         <h2 class="title title--h2 title--bold title--mb">Siedziba Firmy</h2>
         <div class="contact-list">
           <ul>
@@ -164,14 +187,14 @@ import CustomButton from "@/components/CustomButton.vue";
     </div>
     <div class="container">
       <!-- eslint-disable-next-line -->
-      <h2 class="title title--h2 title--bold">Skontaktuj się z nami!</h2>
+      <h2 class="title title--h2 title--bold slide-in">Skontaktuj się z nami!</h2>
       <div class="underline underline--mb"></div>
-      <p class="text">
+      <p class="text slide-in">
         <!-- eslint-disable-next-line -->
         Jesteśmy do Twojej dyspozycji od poniedziałku do piątku w godzinach
         8.00-16.00
       </p>
-      <CustomButton class="bg-granat">Skontaktuj się</CustomButton>
+      <CustomButton class="bg-granat slide-in">Skontaktuj się</CustomButton>
     </div>
     <FooterElektro />
   </div>

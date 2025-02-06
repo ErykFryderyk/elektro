@@ -19,27 +19,57 @@ const menuItems = ref([
           :key="index"
           :to="item.path"
         >
-          <li class="mobile_nav__item">
+          <span class="mobile_nav__item">
             {{ item.string }}
-          </li>
+          </span>
         </router-link>
       </ul>
     </nav>
     <div class="logo">
-      <LogoElectro />
+      <LogoElectro class="footer-logo" />
     </div>
   </div>
   <div class="discription">
     <!-- eslint-disable-next-line -->
-    <p>All rights reserved © 2024 <a href="https://github.com/ErykFryderyk">Eryk Fryderyk</a></p>
+    <p>
+      All rights reserved © 2024
+      <a href="https://github.com/ErykFryderyk">Eryk Fryderyk</a>
+    </p>
   </div>
 </template>
 <style lang="scss" scoped>
 .footer {
+  padding-top: 40px;
   background-color: #002332;
+  padding: 0 20px;
+  
+  @media (min-width: 768px) {
+    position: relative;
+    min-height: 200px;
+    display: grid;
+    grid-template-columns: 0.25fr 0.75fr;
+    grid-template-rows: 1fr;
+
+  }
 }
+
 .mobile-nav {
-  padding: 40px 0 40px 33px;
+  @media (min-width: 768px) {
+    width: 100%;
+    grid-column: 2;
+    grid-row: 1;
+    position: absolute;
+    bottom: 0;
+  }
+  &__items {
+    display: flex;
+    flex-direction: column;
+
+    @media (min-width: 768px) {
+      flex-direction: row;
+      justify-content: center;
+    }
+  }
 }
 a {
   display: flex;
@@ -50,17 +80,38 @@ a {
   font-style: normal;
   font-weight: 500;
   line-height: normal;
+  width: 160px;
+  margin-bottom: 24px;
 
-  .mobile_nav__item {
-    margin-bottom: 24px;
+  @media (min-width: 768px) {
+    margin-bottom: 0;
+    width: auto;
+    margin-right: 2.5rem;
   }
 }
 .logo {
   display: flex;
   justify-content: center;
-  padding-bottom: 50px;
+
+  @media (min-width: 768px) {
+    position: absolute;
+    bottom: 0;
+    justify-self: start;
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .footer-logo {
+    transform: scale(2.5);
+
+    @media (min-width: 768px) {
+      transform: none;
+    }
+  }
 }
+
 .discription {
+  padding-top: 50px;
   text-align: center;
   background: #002332;
   p {
