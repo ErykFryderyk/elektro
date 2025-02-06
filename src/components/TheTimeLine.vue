@@ -43,6 +43,10 @@ ul li {
     background: #e4e4e4;
     transform: translateX(-50%);
   }
+  &__lists {
+    display: flex;
+    flex-direction: column;
+  }
   &__item {
     width: 100%;
     display: flex;
@@ -67,7 +71,7 @@ ul li {
 }
 .underline {
   width: 55%;
-  height: 24px;
+  height: 20px;
   transform: translateY(-10px);
   background-color: #f9cb53;
   margin-bottom: 24px;
@@ -102,19 +106,60 @@ ul li {
 }
 
 .timeline__item {
-  &:nth-child(odd) {
-    .title {
-      text-align: left;
+  @media (max-width: 1199px) {
+    &:nth-child(odd) {
+      .title {
+        text-align: left;
+      }
+    }
+    &:nth-child(even) {
+      .title {
+        text-align: right;
+      }
+
+      .desc {
+        text-align: right;
+      }
     }
   }
-  &:nth-child(even) {
-    .title {
-      text-align: right;
+}
+@media (min-width: 1200px) {
+  .timeline {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    height:670px;
+    overflow-x: scroll;
+  }
+  .timeline::before {
+    position: absolute;
+    width: 100%;
+    height: 10px;
+    top: 50%;
+  }
+  .timeline__lists {
+    flex-direction: row;
+  }
+  .timeline__item {
+    width: 350px;
+    display: flex;
+    padding: 0 10px;
+    
+    &:nth-child(even) {
+      transform: translateY(-30%);
+      align-items: start;
     }
+    
 
-    .desc {
-      text-align: right;
+    &:nth-child(odd) {
+      transform: translateY(30%);
     }
+  }
+  .underline {
+    position: absolute;
+    width: 30px;
+    height: 55%;
+    z-index: -1;
   }
 }
 </style>
