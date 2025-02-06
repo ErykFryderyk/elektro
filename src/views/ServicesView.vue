@@ -1,45 +1,71 @@
 <script setup>
+import { ref, onMounted, onUnmounted } from 'vue';
+import { useScrollAnimations, clearScrollTriggers, slideInFrom } from '@/assets/utils/useScrollAnimations';
+
 // COMPONENTS
 import FooterElektro from "../components/FooterElektro.vue";
 import CustomButton from "@/components/CustomButton.vue";
+import SplitSection from "@/components/SplitSection.vue";
 // ICON
 import SmallThunderIcon from "@/assets/svg/SmallThunderIcon.vue";
 import ClearDayIcon from "@/assets/svg/ClearDayIcon.vue";
 import HeatIcon from "@/assets/svg/HeatIcon.vue";
 import AvgPaceIcon from "@/assets/svg/AvgPaceIcon.vue";
 import InstantMixIcon from "@/assets/svg/InstantMixIcon.vue";
+
+onMounted(() => {
+  // Wywołanie funkcji z selektorem elementów do animacji
+  useScrollAnimations('.slide-up');
+  slideInFrom('.slide-in');
+});
+
+onUnmounted(() => {
+  // Czyszczenie instancji ScrollTrigger po zniszczeniu komponentu
+  clearScrollTriggers();
+});
 </script>
 <template>
   <div class="services">
     <div class="container">
       <div class="">
-        <div class="">
-          <p style="font-size: 16px; color: #797979; margin-bottom: 24px">
-            Strona główna > Nasza oferta
-          </p>
-        </div>
-        <!-- eslint-disable-next-line -->
-        <h1 class="title title--h2 title--bold">Co oferujemy?</h1>
-        <div class="underline underline--mb"></div>
-        <div class="image-wrapper">
-          <div class="rectangle rectangle--yellow"></div>
-          <img src="../assets/img/services.jpeg" alt="services-hero-image" />
-        </div>
+        <SplitSection>
+          <template #left>
+            <div class="">
+              <p style="font-size: 16px; color: #797979; margin-bottom: 24px">
+                Strona główna > Nasza oferta
+              </p>
+            </div>
+            <!-- eslint-disable-next-line -->
 
-        <h2 class="title title--h2 title--uppercase title-small title--medium">
-          Wszystko czego potrzebujesz!
-        </h2>
-        <h2
-          class="title title--h2 title--uppercase title-small title--medium title--gray title-mb"
-        >
-          Z zakresu elektryki
-        </h2>
-        <!-- eslint-disable-next-line -->
-        <p class="text">
-          Jesteśmy doświadczonymi elektrykami z wiedzą w zakresie różnorodnych
-          instalacji elektrycznych. Zapewniamy kompleksowe usługi elektryczne,
-          zgodne z najnowszymi standardami i przepisami.
-        </p>
+            <h1 class="title title--h2 title--bold slide-in">Co oferujemy?</h1>
+            <div class="underline underline--mb slide-in"></div>
+            <h2
+              class="title title--h2 title--uppercase title-small title--medium"
+            >
+              Wszystko czego potrzebujesz!
+            </h2>
+            <h2
+              class="title title--h2 title--uppercase title-small title--medium title--gray title-mb"
+            >
+              Z zakresu elektryki
+            </h2>
+            <!-- eslint-disable-next-line -->
+            <p class="text slide-up">
+              Jesteśmy doświadczonymi elektrykami z wiedzą w zakresie
+              różnorodnych instalacji elektrycznych. Zapewniamy kompleksowe
+              usługi elektryczne, zgodne z najnowszymi standardami i przepisami.
+            </p>
+          </template>
+          <template #right>
+            <div class="image-wrapper">
+              <div class="rectangle rectangle--yellow"></div>
+              <img
+                src="../assets/img/services.jpeg"
+                alt="services-hero-image"
+              />
+            </div>
+          </template>
+        </SplitSection>
       </div>
       <div class="">
         <div class="services-icon">
