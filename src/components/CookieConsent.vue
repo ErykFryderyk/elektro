@@ -22,9 +22,9 @@ const acceptCookies = () => {
 <style lang="scss">
 .cookie-banner {
   position: fixed;
-  bottom: 10px;
-  left: 10px;
-  right: 10px;
+  bottom: 30px;
+  left: 15px;
+  right: 15px;
   background: #001a25;
   padding: 10px;
   text-align: center;

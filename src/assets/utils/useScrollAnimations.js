@@ -29,7 +29,7 @@ ScrollTrigger.matchMedia({
             scrollTrigger: {
               trigger: item,
               start: 'top 80%',
-              markers: true,
+              // markers: true,
               id: `large-${index + 1}`,
             },
           }
@@ -53,7 +53,7 @@ ScrollTrigger.matchMedia({
             scrollTrigger: {
               trigger: item,
               start: 'top 90%',
-              markers: true,
+              // markers: true,
               id: `small-${index + 1}`,
             },
           }
