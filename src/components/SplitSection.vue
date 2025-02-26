@@ -26,7 +26,11 @@ defineProps({
 .split-section {
   display: flex;
   gap: 20px; /* Odstęp między sekcjami */
-  padding: 0px 20px;
+  /* padding: 0px 20px; */
+
+  @media (min-width: 992px) {
+    gap: 50px;
+  }
 }
 
 .split-section__left {
@@ -42,6 +46,12 @@ defineProps({
 /* Obracanie stron (reverse layout) */
 .split-section.reverse {
   flex-direction: row-reverse;
+}
+
+@media (max-width: 762px) {
+  .split-section {
+    flex-direction: column; 
+  }
 }
 
 @media (max-width: 992px) {

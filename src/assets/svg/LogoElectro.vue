@@ -30,17 +30,17 @@
 
 <style lang="scss" scoped>
 svg {
-  width: 120px;
+  width: 130px;
   height: 50px;
 
   @media (min-width: 768px) {
-    width: 150px;
+    width: 140px;
   }
   @media (min-width: 992px) {
-    width: 200px;
+    width: 150px;
   }
   @media (min-width: 1200px) {
-    width: 250px;
+    width: 160px;
   }
 }
 </style>

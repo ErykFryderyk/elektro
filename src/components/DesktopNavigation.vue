@@ -12,14 +12,14 @@ const menuItems = ref([
 </script>
 <template>
   <div class="desktop-navigation">
-    <div class="container container--inline desktop-menu">
+    <div class="desktop-menu container">
       <router-link :to="'/'">
-        <LogoElectro />
+        <!-- <LogoElectro /> -->
+        <img src="../assets//img/logo-electro.png" alt="" srcset="" :to="'/'">
       </router-link>
       <nav class="navigation-links">
         <ul class="navigation-links__items">
           <router-link
-            style="height: 60px; display: flex; align-items: center; justify-content: center;"
             v-for="(item, index) in menuItems"
             :key="index"
             :to="item.path"
@@ -29,7 +29,9 @@ const menuItems = ref([
           </router-link>
         </ul>
       </nav>
-      <CustomButton class="bg-orange custom-font-size">+48 513 587 427</CustomButton>
+      <a href="tel:+48513587427">
+        <CustomButton class="bg-orange custom-font-size">+48 513 587 427</CustomButton>
+      </a>
     </div>
   </div>
 </template>
@@ -38,11 +40,11 @@ const menuItems = ref([
 .desktop-navigation {
   position: sticky;
   width: 100%;
-  height: 90px;
+  height: 80px;
   background: #002332;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   padding: 0 15px 0 15px;
   box-shadow: 0px 0px 10px 1px #17171769;
 
@@ -53,11 +55,17 @@ const menuItems = ref([
 .desktop-menu {
   display: grid;
   grid-template-columns: 1fr 3fr 1fr;
+
+  a {
+    display: flex;
+    align-items: center;
+  }
 }
 
 .navigation-links {
   display: flex;
   width: 100%;
+  align-items: center;
 
   &__items {
     display: flex;

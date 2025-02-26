@@ -15,7 +15,7 @@ defineProps({
         <p class="desc">
           {{ item.desc }}
         </p>
-        <img class="img" :src="srcImg" alt="" />
+        <img class="img" :src="item.srcImg" :alt="'image-'+item.title" />
       </li>
     </ul>
   </div>
@@ -26,12 +26,37 @@ ul li {
   margin: 0;
   padding: 0;
 }
+
 .timeline {
   width: 100%;
   margin-bottom: 50px;
   padding-top: 50px;
   padding-bottom: 20px;
   position: relative;
+  overflow-y: hidden;
+
+
+  & {
+    --sb-track-color: #ffffff;
+    --sb-thumb-color: #f9cb53;
+    --sb-size: 10px;
+    cursor: pointer;
+  }
+
+  &::-webkit-scrollbar {
+    width: var(--sb-size);
+  }
+
+  &::-webkit-scrollbar-track {
+    background: var(--sb-track-color);
+    border-radius: 10px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: var(--sb-thumb-color);
+    border-radius: 10px;
+    border: 4px solid #ffffff;
+  }
 
   &::before {
     content: "";
@@ -43,15 +68,18 @@ ul li {
     background: #e4e4e4;
     transform: translateX(-50%);
   }
+
   &__lists {
     display: flex;
     flex-direction: column;
   }
+
   &__item {
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: start;
+    margin-bottom: 30px;
 
     &:nth-child(even) {
       align-items: end;
@@ -69,6 +97,7 @@ ul li {
   position: relative;
   width: 100%;
 }
+
 .underline {
   width: 55%;
   height: 20px;
@@ -76,26 +105,28 @@ ul li {
   background-color: #f9cb53;
   margin-bottom: 24px;
 }
+
 .subtitle {
   color: #00405b;
   font-family: Montserrat;
-  font-size: 18px;
+  font-size: 20px;
   font-style: normal;
-  font-weight: 600;
+  font-weight: 700;
   line-height: normal;
   text-transform: uppercase;
-  margin-bottom: 12px;
+  margin-bottom: 10px;
 }
+
 .desc {
   color: #002332;
   font-family: Montserrat;
-  font-size: 16px;
+  font-size: 18px;
   font-style: normal;
   font-weight: 500;
   line-height: normal;
-  margin-bottom: 36px;
-  margin-bottom: 24px;
+  margin-bottom: 15px;
 }
+
 .img {
   width: 100%;
   max-width: 500px;
@@ -103,6 +134,8 @@ ul li {
   background-color: #d9d9d9;
   position: relative;
   margin-bottom: 24px;
+  object-fit: cover;
+
 }
 
 .timeline__item {
@@ -112,6 +145,7 @@ ul li {
         text-align: left;
       }
     }
+
     &:nth-child(even) {
       .title {
         text-align: right;
@@ -123,43 +157,60 @@ ul li {
     }
   }
 }
+
 @media (min-width: 1200px) {
   .timeline {
     width: 100%;
     display: flex;
     align-items: center;
-    height:670px;
+    height: 670px;
     overflow-x: scroll;
   }
+
   .timeline::before {
     position: absolute;
     width: 100%;
     height: 10px;
     top: 50%;
   }
+
   .timeline__lists {
     flex-direction: row;
   }
+
   .timeline__item {
     width: 350px;
     display: flex;
     padding: 0 10px;
-    
+
     &:nth-child(even) {
       transform: translateY(-30%);
       align-items: start;
     }
-    
+
 
     &:nth-child(odd) {
       transform: translateY(30%);
     }
   }
+
+  .subtitle {
+    font-size: 18px;
+  }
+  .desc {
+    font-size: 16px;
+    margin-left: 33px;
+    margin-bottom: 0px;
+  }
+  
   .underline {
     position: absolute;
     width: 30px;
     height: 55%;
     z-index: -1;
+  }
+  .img {
+    object-fit: fill;
   }
 }
 </style>

@@ -12,44 +12,46 @@ const menuItems = ref([
 
 <template>
   <div class="footer">
-    <nav class="mobile-nav">
-      <ul class="mobile-nav__items">
-        <router-link
-          v-for="(item, index) in menuItems"
-          :key="index"
-          :to="item.path"
-        >
-          <span class="mobile_nav__item">
-            {{ item.string }}
-          </span>
-        </router-link>
-      </ul>
-    </nav>
-    <div class="logo">
-      <LogoElectro class="footer-logo" />
+    <div class="footer_inner container" style="margin-bottom: 0px;">
+      <nav class="mobile-nav">
+        <ul class="mobile-nav__items">
+          <router-link v-for="(item, index) in menuItems" :key="index" :to="item.path">
+            <span class="mobile_nav__item">
+              {{ item.string }}
+            </span>
+          </router-link>
+        </ul>
+      </nav>
+      <div class="logo">
+        <LogoElectro class="footer-logo" />
+      </div>
     </div>
-  </div>
-  <div class="discription">
-    <!-- eslint-disable-next-line -->
-    <p>
-      All rights reserved © 2024
-      <a href="https://github.com/ErykFryderyk">Eryk Fryderyk</a>
-    </p>
+    <div class="discription">
+      <p>
+        All rights reserved © 2025 Elektro. Created by <a href="https://github.com/ErykFryderyk" target="blank">💻</a>
+      </p>
+    </div>
   </div>
 </template>
 <style lang="scss" scoped>
 .footer {
   padding-top: 40px;
   background-color: #002332;
+
+  @media (min-width: 768px) {
+    padding-top: 0;
+  }
+}
+
+.footer_inner {
   padding: 0 20px;
-  
+
   @media (min-width: 768px) {
     position: relative;
     min-height: 200px;
     display: grid;
     grid-template-columns: 0.25fr 0.75fr;
     grid-template-rows: 1fr;
-
   }
 }
 
@@ -61,6 +63,7 @@ const menuItems = ref([
     position: absolute;
     bottom: 0;
   }
+
   &__items {
     display: flex;
     flex-direction: column;
@@ -71,6 +74,7 @@ const menuItems = ref([
     }
   }
 }
+
 a {
   display: flex;
   flex-direction: column;
@@ -89,6 +93,7 @@ a {
     margin-right: 2.5rem;
   }
 }
+
 .logo {
   display: flex;
   justify-content: center;
@@ -111,15 +116,22 @@ a {
 }
 
 .discription {
-  padding-top: 50px;
+  padding-top: 40px;
   text-align: center;
   background: #002332;
+
+  @media (min-width: 992px) {
+    padding-top: 20px;
+  }
+
   p {
     color: #003d57;
   }
+
   a {
     display: inline;
     color: #005377;
+
     &:hover {
       color: #003d57;
     }

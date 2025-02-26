@@ -76,18 +76,18 @@ onUnmounted(() => {
     <div class="hero">
       <TunderIcon class="medium-no-visible" />
     </div>
-    <div class="container">
+    <div class="container container--padding-b">
       <div class="first-section">
         <BigTunderIcon class="mobile--no-visible big-tunder-grid slide-up" />
         <h1 class="main-title header-grid">
           Usługi elektryczne na najwyższym poziomie
         </h1>
-        <CustomButton class="bg-granat contact-button-grid"
-          >Skontaktuj się</CustomButton
-        >
+        <router-link to="/contact">
+          <CustomButton class="bg-granat contact-button-grid">Skontaktuj się</CustomButton>
+        </router-link>
       </div>
     </div>
-    <div class="container">
+    <div class="container container--padding-b">
       <SplitSection>
         <template #left>
           <div class="" style="display: flex; flex-direction: column; justify-content: center; height: 100%; ">
@@ -103,9 +103,11 @@ onUnmounted(() => {
               terminowość wykonywanych prac. Dążymy do rozwoju firmy oraz
               podnoszenia jakości świadczonych usług. Posiadamy potrzebne
               kwalifikacje, uprawnienia, licencje oraz niezbędne przy pracy
-              elektryka doświadczenie
+              elektryka doświadczenie.
             </p>
-            <CustomButton class="bg-granat">Sprawdź naszą ofertę</CustomButton>
+            <router-link to="/services">
+              <CustomButton class="bg-granat">Sprawdź naszą ofertę</CustomButton>
+            </router-link>
           </div>
         </template>
         <template #right>
@@ -115,13 +117,14 @@ onUnmounted(() => {
         </template>
       </SplitSection>
     </div>
-    <div class="image image--mobile-visbile">
-      <LogoElectro />
-    </div>
-    <div class="container">
+      <div class="image image--mobile-visbile" style="margin-bottom: 50px;">
+        <LogoElectro style="transform: scale(1.5);" />
+      </div>
+    <!-- <div class="container">
       <h2 class="main-title main-title--small-size slide-in">Czym się zajmujemy</h2>
-    </div>
-    <div class="container">
+    </div> -->
+    <div class="container container--padding-b">
+      <h2 class="main-title main-title--small-size slide-in">Czym się zajmujemy</h2>
       <DynamicGrid :columns="4">
         <template #column-1>
           <DynamicIconBox
@@ -172,29 +175,32 @@ onUnmounted(() => {
         </template>
       </DynamicGrid>
     </div>
-    <div class="container">
+    <div class="container container--padding-b">
       <h2 class="main-title main-title--small-size slide-in">Nasze Realizacje</h2>
       <div class="slide-up" style="width: 100%; background-color: #f1f1f1">
         <SwiperSlider :slides="slides" @image-click="openGallery" />
       </div>
     </div>
-    <div class="container">
-      <h2 class="main-title main-title--small-size slide-in">Skontaktuj się z nami</h2>
+    <div class="container container--padding-b">
+      <h2 class="title title--h2 title--bold">Skontaktuj się z nami!</h2>
+      <div class="underline underline--mb"></div>
       <p class="text">
         Jesteśmy do Twojej dyspozycji od poniedziałku do piątku w godzinach
         8.00-16.00
       </p>
-      <CustomButton class="bg-granat">Skontaktuj się</CustomButton>
+      <router-link to="/contact">
+        <CustomButton class="bg-granat">Skontaktuj się</CustomButton>
+      </router-link>
     </div>
     <FooterElektro />
   </div>
 </template>
-<style lang="scss">
+<style lang="scss" scoped>
 .home {
   background-color: #fff;
 }
 .hero {
-  background-image: url("../assets/img/af6990db72693c8c4a8c981d5a92f0c3.jpeg");
+  background-image: linear-gradient(#00000070, #00000070),url("../assets/img/hero-pic.jpg");
   background-position: center bottom;
   background-repeat: no-repeat;
   background-size: cover;
@@ -202,9 +208,11 @@ onUnmounted(() => {
   display: flex;
   padding-top: 40px;
   justify-content: center;
+  align-items: center;
   position: relative;
 
   @media (min-width: 768px) {
+    background-image: linear-gradient(#00000038, #00000038),url("../assets/img/hero-pic.jpg");
     background-position: center;
     align-items: center;
   }

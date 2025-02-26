@@ -1,3 +1,8 @@
+$desktop: 1200px;
+$tablet: 768px;
+$laptop: 992px;
+$large-screen: 1441px;
+
 *,
 *::before,
 *::after {
@@ -70,16 +75,9 @@ button {
 .container {
   width: 100%;
   margin: 0px auto;
-  padding: 20px 15px;
-
-  &--inline{
-    display: flex;
-    justify-content: space-between;
-  }
 
   @media (min-width: 768px) {
     width: 750px;
-    margin: 40px auto;
   }
 
   @media (min-width: 992px) {
@@ -93,6 +91,33 @@ button {
   @media (min-width: 1441px) {
     width: 1400px;
   }
+
+  &--inline{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  &--padding-b {
+    padding: 25px 15px 50px 15px;
+
+    @media (min-width: 768px) {
+      padding: 25px 15px 50px 15px
+    }
+  
+    @media (min-width: 992px) {
+      padding: 35px 15px;
+    }
+  
+    @media (min-width: 1200px) {
+      padding: 40px 15px;
+    }
+  
+    @media (min-width: 1441px) {
+      padding: 50px 15px;
+    }
+  }
+
+  
 }
 
 .sticky {
@@ -119,11 +144,13 @@ button {
     display: flex; 
     align-items: center;
     max-width: 550px;
+    margin-bottom: 60px;
   }
 
   @media (min-width: 992px) {
     font-size: 48px;
     max-width: 650px;
+    margin-bottom: 100px;
   }
 
   &--small-size{
@@ -162,7 +189,7 @@ button {
   line-height: normal;
 
   &--h2 {
-    font-size: 24px;
+    font-size: 30px;
     font-style: normal;
     z-index: 1;
     position: relative;
@@ -198,6 +225,10 @@ button {
 
   &--mb-40 {
     margin-bottom: 3rem;
+  }
+
+  &--bold {
+    font-weight: bold;
   }
   
 }

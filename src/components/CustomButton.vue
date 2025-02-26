@@ -9,6 +9,7 @@ button {
   display: inline-flex;
   padding: 18px 20px;
   width: auto;
+  max-width: 240px;
   height: 56px;
   justify-content: center;
   align-items: center;

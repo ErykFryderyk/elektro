@@ -5,180 +5,190 @@ import CustomButton from "@/components/CustomButton.vue";
 import FooterElektro from "../components/FooterElektro.vue";
 import TheTimeLine from "@/components/TheTimeLine.vue";
 import SplitSection from "@/components/SplitSection.vue";
+// import SectionImage from '@/components/SectionImage.vue';
 
 const timeLineData = ref([
   {
-    year: 2018,
-    title: "Rozpoczęcie firmy",
-    srcImg: "../assets/img/af6990db72693c8c4a8c981d5a92f0c3.jpeg",
-    desc: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.`,
+    year: 2010,
+    title: "Początek działalności",
+    srcImg: "/img/time-line-1.jpg",
+    desc: `Rozpoczęcie działalności jako firma elektryczna, oferująca kompleksowe usługi instalacyjne dla klientów indywidualnych i firm.`,
+  },
+  {
+    year: 2011,
+    title: "Rozszerzenie oferty",
+    srcImg: "/img/time-line-2.jpg",
+    desc: `Rozszerzenie oferty o usługi serwisowe oraz montażowe, w tym instalacje elektryczne, alarmowe i monitoring.`,
+  },
+  {
+    year: 2014,
+    title: "Współpraca z deweloperami",
+    srcImg: "/img/time-line-4.webp",
+    desc: `Podpisanie pierwszych umów z dużymi deweloperami na realizację instalacji elektrycznych w kompleksach mieszkaniowych.`,
+  },
+  {
+    year: 2015,
+    title: "Nowoczesne technologie",
+    srcImg: "/img/time-line-3.webp",
+    desc: `Inwestycja w nowoczesne technologie, takie jak fotowoltaika i systemy energooszczędne, umożliwiające klientom redukcję kosztów energii.`,
   },
   {
     year: 2019,
-    title: "Rozbudowa firmy eko plast",
-    srcImg: "af6990db72693c8c4a8c981d5a92f0c3.jpeg",
-    desc: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.`,
-  },
-  {
-    year: 2020,
-    title: "Rozbudowa firmy eko plast",
-    srcImg: "af6990db72693c8c4a8c981d5a92f0c3.jpeg",
-    desc: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.`,
-  },
-  {
-    year: 2022,
-    title: "Rozbudowa firmy eko plast",
-    srcImg: "af6990db72693c8c4a8c981d5a92f0c3.jpeg",
-    desc: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.`,
+    title: "1000 zadowolonych klientów",
+    srcImg: "/img/time-line-5.webp",
+    desc: `Przekroczenie liczby 1000 zrealizowanych projektów oraz dalszy dynamiczny rozwój firmy.`,
 
   },
   {
     year: 2022,
-    title: "Rozbudowa firmy eko plast",
-    srcImg: "af6990db72693c8c4a8c981d5a92f0c3.jpeg",
-    desc: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.`,
-
-  },
-  {
-    year: 2022,
-    title: "Rozbudowa firmy eko plast",
-    srcImg: "af6990db72693c8c4a8c981d5a92f0c3.jpeg",
-    desc: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.`,
+    title: "Przyszłość pełna energii",
+    srcImg: "/img/time-line-6.webp",
+    desc: `Kontynuujemy naszą misję dostarczania nowoczesnych i bezpiecznych rozwiązań elektrycznych, pomagając klientom oszczędzać energię i dbać o środowisko.`,
 
   },
 ]);
 
 onMounted(() => {
-  // Wywołanie funkcji z selektorem elementów do animacji
   useScrollAnimations('.slide-up');
   slideInFrom('.slide-in');
 });
 
 onUnmounted(() => {
-  // Czyszczenie instancji ScrollTrigger po zniszczeniu komponentu
   clearScrollTriggers();
 });
 </script>
 
 <template>
   <div class="about">
-    <div class="container">
+    <div class="container container--padding-b">
       <SplitSection>
         <template #left>
-          <div class="">
-            <div class="">
-              <p style="font-size: 16px; color: #797979; margin-bottom: 24px">
-                Strona główna > O nas
+          <div class="path">
+            <p class="path__text">
+              <router-link to="/">Strona główna</router-link> > O nas
+            </p>
+          </div>
+          <div class="" style="display: flex; flex-direction: column; justify-content: space-between; height: 94%;">
+
+            <div>
+              <h1 class="title title--h2 title--bold slide-in">O nas</h1>
+              <div class="underline underline--mb"></div>
+            </div>
+
+            <div>
+              <h2 class="title title--h2 title--uppercase title--small title--medium">
+                PHU ELEKTRO Rafał Kostrzewa
+              </h2>
+              <p class="text slide-up">
+                Elektro to jedna z wiodących firm elektrycznych na rynku w regionie Konińskim, specjalizująca się w
+                kompleksowych usługach elektrycznych. Dzięki wieloletniemu doświadczeniu oraz innowacyjnemu podejściu
+                dostarczamy bezpieczne, nowoczesne i energooszczędne rozwiązania elektryczne.<br><br>
+                Dlaczego warto nam zaufać?<br>
+                🔹 Działamy na rynku od wielu lat, zdobywając zaufanie klientów i
+                partnerów biznesowych.<br>
+                🔹 Nowoczesne technologie – inwestujemy w innowacyjne rozwiązania, które pozwalają oszczędzać energię i
+                zwiększać komfort użytkowników.<br>
+                🔹 Indywidualne podejście – każde zlecenie traktujemy priorytetowo, dopasowując rozwiązania do potrzeb
+                klienta.<br>
+                🔹 Bezpieczeństwo i jakość – nasze instalacje spełniają wszystkie normy i są wykonywane zgodnie z
+                najwyższymi standardami.
               </p>
             </div>
-            <!-- eslint-disable-next-line -->
-            <h1 class="title title--h2 title--bold slide-up">O nas</h1>
-            <div class="underline underline--mb"></div>
-
-            <h2
-              class="title title--h2 title--uppercase title--small title--medium"
-            >
-              PHU ELEKTRO Rafał Kostrzewa
-            </h2>
-            <!-- eslint-disable-next-line -->
-            <p class="text slide-up">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-              reprehenderit in voluptate velit esse cillum dolore eu fugiat
-              nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-              sunt in culpa qui officia deserunt mollit anim id est laborum.
-            </p>
           </div>
         </template>
         <template #right>
-          <div class="image-wrapper">
-            <div class="rectangle rectangle--yellow"></div>
-            <img
-              src="../assets/img/b13d1eb03bc2495b181658cfbf381fad.jpeg"
-              alt="services-hero-image"
-            />
+          <div class="image"></div>
+          <!-- <div class="image-wrapper"> -->
+          <!-- <div class="rectangle rectangle--yellow"></div> -->
+          <!-- <img src="../assets/img/b13d1eb03bc2495b181658cfbf381fad.jpeg" alt="services-hero-image" /> -->
+          <!-- </div> -->
+          <!-- <SectionImage img="video.acd58b90.png">
+            <LogoElectro />
+          </SectionImage> -->
+        </template>
+      </SplitSection>
+    </div>
+    <div class="container container--padding-b">
+      <h1 class="main-title main-title--small-size slide-in">Nasz skład</h1>
+
+      <SplitSection>
+        <template #left>
+          <img class="our-team-img" src="../assets/img/employee.webp" alt="boss-image" />
+        </template>
+        <template #right>
+          <div class="our-team-content">
+            <h3 class="title title--h2 slide-up">Rafał</h3>
+            <p class="text text--mb-40 slide-up">
+              Jestem założycielem oraz właścicielem firmy <b>Elektro</b>, jednego z wiodących przedsiębiorstw
+              elektrycznych w naszym regionie. Zaczynałem ponad 15 lat temu jako elektryk, pracując w różnych firmach i
+              zdobywając doświadczenie. Dziś prowadzę dynamicznie rozwijającą się firmę, która zatrudnia kilku
+              wykwalifikowanych specjalistów i realizuje projekty na terenie wielkopolski i nie tylko.
+            </p>
           </div>
         </template>
       </SplitSection>
-      <div class="">
-        <!-- eslint-disable-next-line -->
-        <h1 class="title title--h2 title--bold slide-up">Nasz skład</h1>
-        <div class="underline underline--mb slide-up"></div>
 
-        <SplitSection>
-          <template #left>
-            <div class="background-for-img">
-              <img src="" alt="boss-image" />
-            </div>
-          </template>
-          <template #right>
-            <h3 class="slide-up">Rafał Kostrzewa</h3>
-            <!-- eslint-disable-next-line -->
-            <p class="text text--mb-40 slide-up">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-              reprehenderit in voluptate velit esse cillum dolore eu fugiat
-              nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-              sunt in culpa qui officia deserunt mollit anim id est laborum.
-            </p>
-          </template>
-        </SplitSection>
-
-        <SplitSection>
-          <template #right>
-            <div class="background-for-img">
-              <img src="" alt="worker-image" />
-            </div>
-          </template>
-          <template #left>
-            <h class="title title--h2">Ryszard Kowalski</h>
-            <!-- eslint-disable-next-line -->
+      <SplitSection>
+        <template #right>
+          <img class="our-team-img" src="../assets/img/bass.webp" alt="worker-image" />
+        </template>
+        <template #left>
+          <div class="our-team-content">
+            <h3 class="title title--h2">Ryszard</h3>
             <p class="text text--mb-40">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-              reprehenderit in voluptate velit esse cillum dolore eu fugiat
-              nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-              sunt in culpa qui officia deserunt mollit anim id est laborum.
+              Jestem Ryszard i jestem jednym z pracowników w firmie Elektro. Pracuję tutaj już od kilku lat i mogę
+              śmiało powiedzieć, że to miejsce, w którym naprawdę można się rozwijać i pracować z najlepszymi
+              specjalistami w branży.<br><br>
+              Na co dzień zajmuję się montażem i serwisem instalacji elektrycznych w budynkach mieszkalnych, biurowych i
+              przemysłowych. Pracujemy z nowoczesnymi technologiami – od klasycznych instalacji, przez systemy
+              automatyki budynkowej, aż po fotowoltaikę i inteligentne zarządzanie energią.
             </p>
-          </template>
-        </SplitSection>
-      </div>
+          </div>
+        </template>
+      </SplitSection>
+    </div>
+    <div class="container container--padding-b">
       <div class="">
-        <!-- eslint-disable-next-line -->
         <h1 class="title title--h2 title--bold">Nasza oś czasu</h1>
         <div class="underline underline--mb"></div>
       </div>
       <div class="">
         <TheTimeLine :data="timeLineData" />
       </div>
+    </div>
+    <div class="container container--padding-b">
       <div class="video">
-        <img src="../assets/img/video.png" />
-      </div>
-      <div class="">
-        <!-- eslint-disable-next-line -->
-        <h2 class="title title--h2">Skontaktuj się z nami!</h2>
-        <div class="underline underline--mb"></div>
-        <p class="text">
-          <!-- eslint-disable-next-line -->
-          Jesteśmy do Twojej dyspozycji od poniedziałku do piątku w godzinach
-          8.00-16.00
-        </p>
-        <CustomButton class="bg-granat">Skontaktuj się</CustomButton>
+        <iframe width="100%" height="300px" src="https://www.youtube.com/embed/-XTUbvmptRs?si=z8r-yTsvTWpsaNXQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
       </div>
     </div>
-    <FooterElektro />
+    <div class="container container--padding-b">
+      <h2 class="title title--h2 title--bold">Skontaktuj się z nami!</h2>
+      <div class="underline underline--mb"></div>
+      <p class="text">
+        Jesteśmy do Twojej dyspozycji od poniedziałku do piątku w godzinach
+        8.00-16.00
+      </p>
+      <router-link to="/contact">
+        <CustomButton class="bg-granat">Skontaktuj się</CustomButton>
+      </router-link>
+    </div>
   </div>
+  <FooterElektro />
 </template>
 <style lang="scss" scoped>
 .about {
   background: #fff;
   padding-top: 10px;
+}
+
+.path {
+  margin-bottom: 24px;
+
+  &__text {
+    font-size: 16px;
+    color: #797979;
+    margin-bottom: 24px;
+  }
 }
 
 h2 {
@@ -190,7 +200,79 @@ h2 {
   line-height: normal;
   text-transform: uppercase;
 }
+
 .video {
   margin: 80px 0;
+
+  iframe {
+    border: none;
+    border-radius: 5px;
+
+    @media (min-width: 768px) {
+      height: 400px; 
+    }
+    @media (min-width: 992px) {
+      height: 500px; 
+    }
+  }
+}
+
+.image {
+  margin-left: 12px;
+  min-height: 377px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: linear-gradient(#00000048, #00000048),
+    url("../assets/img/b13d1eb03bc2495b181658cfbf381fad.jpeg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  box-shadow: 0 0 13px 0px black;
+
+  @media (min-width: 922px) {
+    min-height: 477px;
+  }
+
+  &::before {
+    content: "";
+    position: absolute;
+    background: #f0c85e;
+    bottom: 0;
+    height: 330px;
+    width: 12px;
+    left: -12px;
+
+    @media (min-width: 992px) {
+      height: 400px;
+    }
+  }
+
+  &--mobile-visbile {
+    @media (min-width: 992px) {
+      display: none;
+    }
+  }
+
+  &--deskop-visible {
+    @media (max-width: 992px) {
+      display: none;
+    }
+  }
+}
+
+.our-team-content {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+}
+
+.our-team-img {
+  width: 100%;
+  max-width: 545px;
+  height: 100%;
+  object-fit: cover;
 }
 </style>
