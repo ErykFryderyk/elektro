@@ -15,7 +15,7 @@ defineProps({
         <p class="desc">
           {{ item.desc }}
         </p>
-        <img class="img" :src="item.srcImg" :alt="'image-'+item.title" />
+        <img class="img" :src="'img/'+ item.srcImg" :alt="'image-'+item.title" />
       </li>
     </ul>
   </div>

@@ -11,38 +11,38 @@ const timeLineData = ref([
   {
     year: 2010,
     title: "Początek działalności",
-    srcImg: "/elektro/img/time-line-1.jpg",
+    srcImg: "time-line-1.jpg",
     desc: `Rozpoczęcie działalności jako firma elektryczna, oferująca kompleksowe usługi instalacyjne dla klientów indywidualnych i firm.`,
   },
   {
     year: 2011,
     title: "Rozszerzenie oferty",
-    srcImg: "/img/time-line-2.jpg",
+    srcImg: "time-line-2.jpg",
     desc: `Rozszerzenie oferty o usługi serwisowe oraz montażowe, w tym instalacje elektryczne, alarmowe i monitoring.`,
   },
   {
     year: 2014,
     title: "Współpraca z deweloperami",
-    srcImg: "/time-line-4.webp",
+    srcImg: "time-line-4.webp",
     desc: `Podpisanie pierwszych umów z dużymi deweloperami na realizację instalacji elektrycznych w kompleksach mieszkaniowych.`,
   },
   {
     year: 2015,
     title: "Nowoczesne technologie",
-    srcImg: "/time-line-3.webp",
+    srcImg: "time-line-3.webp",
     desc: `Inwestycja w nowoczesne technologie, takie jak fotowoltaika i systemy energooszczędne, umożliwiające klientom redukcję kosztów energii.`,
   },
   {
     year: 2019,
     title: "1000 zadowolonych klientów",
-    srcImg: "/img/time-line-5.webp",
+    srcImg: "time-line-5.webp",
     desc: `Przekroczenie liczby 1000 zrealizowanych projektów oraz dalszy dynamiczny rozwój firmy.`,
 
   },
   {
     year: 2022,
     title: "Przyszłość pełna energii",
-    srcImg: "/img/time-line-6.webp",
+    srcImg: "time-line-6.webp",
     desc: `Kontynuujemy naszą misję dostarczania nowoczesnych i bezpiecznych rozwiązań elektrycznych, pomagając klientom oszczędzać energię i dbać o środowisko.`,
 
   },
