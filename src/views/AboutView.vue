@@ -11,7 +11,7 @@ const timeLineData = ref([
   {
     year: 2010,
     title: "Początek działalności",
-    srcImg: "/img/time-line-1.jpg",
+    srcImg: "/elektro/img/time-line-1.jpg",
     desc: `Rozpoczęcie działalności jako firma elektryczna, oferująca kompleksowe usługi instalacyjne dla klientów indywidualnych i firm.`,
   },
   {
@@ -23,13 +23,13 @@ const timeLineData = ref([
   {
     year: 2014,
     title: "Współpraca z deweloperami",
-    srcImg: "/img/time-line-4.webp",
+    srcImg: "/time-line-4.webp",
     desc: `Podpisanie pierwszych umów z dużymi deweloperami na realizację instalacji elektrycznych w kompleksach mieszkaniowych.`,
   },
   {
     year: 2015,
     title: "Nowoczesne technologie",
-    srcImg: "/img/time-line-3.webp",
+    srcImg: "/time-line-3.webp",
     desc: `Inwestycja w nowoczesne technologie, takie jak fotowoltaika i systemy energooszczędne, umożliwiające klientom redukcję kosztów energii.`,
   },
   {
