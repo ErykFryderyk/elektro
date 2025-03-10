@@ -33,9 +33,16 @@ const acceptCookies = () => {
   justify-content: space-between;
   align-items: center;
   border-radius: 5px;
+
+  @media (min-width: 1200px) {
+    left: 50%;
+    transform: translateX(-50%);
+    width: 70%;
+    bottom: 10px;
+  }
   
   p {
-    color: #0082ba;
+    color: #4ac2f6;
   }
 }
 
