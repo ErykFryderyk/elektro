@@ -177,7 +177,7 @@ onUnmounted(() => {
     </div>
     <div class="container container--padding-b">
       <h2 class="main-title main-title--small-size slide-in">Nasze Realizacje</h2>
-      <div class="slide-up" style="width: 100%; background-color: #f1f1f1">
+      <div class="slide-up" style="width: 100%; ">
         <SwiperSlider :slides="slides" @image-click="openGallery" />
       </div>
     </div>
@@ -302,7 +302,7 @@ onUnmounted(() => {
 //SIDER
 .swiper-button-next,
 .swiper-button-prev {
-  color: white; /* Niebieski kolor */
+  color: #f9cb53; /* Niebieski kolor */
   font-size: 24px; /* Powiększenie strzałek */
 }
 .swiper-pagination-bullet {
