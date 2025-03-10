@@ -91,11 +91,30 @@ function openGallery(index) {
   </div>
 </template>
 <style scoped>
+
 .swiper {
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
   object-fit: cover;
+}
+
+:deep(.swiper-button-prev),
+:deep(.swiper-button-next) {
+  color: #f9cb53; /* Zmień kolor strzałek na czerwony */
+  font-size: 24px;
+}
+
+:deep(.swiper-button-prev:hover),
+:deep(.swiper-button-next:hover) {
+  color: #cd9f2b; /* Zmień kolor po najechaniu myszką */
+  font-size: 24px;
+}
+:deep(.swiper-pagination-bullet) {
+  background: #f9cb53; /* Zmień kolor kropek na czerwony */
+  width: 26px;
+  height: 26px;
+  /* transform: translateY(10px); */
 }
 </style>
