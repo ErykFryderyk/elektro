@@ -1,6 +1,6 @@
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue';
-import { useScrollAnimations, clearScrollTriggers, slideInFrom } from '@/assets/utils/useScrollAnimations';
+import { useScrollAnimations, clearScrollTriggers, slideInFrom,appearAnimation } from '@/assets/utils/useScrollAnimations';
 
 import FooterElektro from "../components/FooterElektro.vue";
 import CustomButton from "@/components/CustomButton.vue";
@@ -10,6 +10,7 @@ import SplitSection from "@/components/SplitSection.vue";
 onMounted(() => {
   useScrollAnimations('.slide-up');
   slideInFrom('.slide-in');
+  appearAnimation('.appear-animation');
 });
 
 onUnmounted(() => {
@@ -21,7 +22,7 @@ onUnmounted(() => {
     <div class="container container--padding-b">
       <SplitSection>
         <template #right>
-          <div class="image"></div>
+          <div class="image appear-animation"></div>
 
           <!-- <div class="image-wrapper"> -->
             <!-- <div class="rectangle rectangle--yellow"></div> -->
@@ -58,8 +59,8 @@ onUnmounted(() => {
       </SplitSection>
     </div>
     <div class="container container--padding-b">
-      <h2 class="title title--h2 title--bold title--mb">Siedziba Firmy</h2>
-      <div class="underline underline--mb"></div>
+      <h2 class="title title--h2 title--bold title--mb slide-in">Siedziba Firmy</h2>
+      <div class="underline underline--mb slide-in"></div>
       <div class="contact-list">
         <ul>
           <li>
@@ -126,7 +127,7 @@ onUnmounted(() => {
         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2445.6894827684705!2d18.220988712413156!3d52.19451677186073!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x471b317dddc4a7c1%3A0x31244be4d733ab70!2sELEKTRO%20Rafa%C5%82%20Kostrzewa%20Konin!5e0!3m2!1spl!2spl!4v1719522666553!5m2!1spl!2spl"
         loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </div>
-    <div class="container container--padding-b">
+    <div class="container container--padding-b appear-animation">
       <h2 class="title title--h2 title--bold">Skontaktuj się z nami!</h2>
       <div class="underline underline--mb"></div>
       <p class="text">

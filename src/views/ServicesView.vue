@@ -1,6 +1,6 @@
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue';
-import { useScrollAnimations, clearScrollTriggers, slideInFrom } from '@/assets/utils/useScrollAnimations';
+import { useScrollAnimations, clearScrollTriggers, slideInFrom, appearAnimation } from '@/assets/utils/useScrollAnimations';
 
 // COMPONENTS
 import FooterElektro from "../components/FooterElektro.vue";
@@ -18,6 +18,7 @@ onMounted(() => {
   // Wywołanie funkcji z selektorem elementów do animacji
   useScrollAnimations('.slide-up');
   slideInFrom('.slide-in');
+  appearAnimation('.appear-animation');
 });
 
 onUnmounted(() => {
@@ -41,12 +42,12 @@ onUnmounted(() => {
                 <h1 class="title title--h2 title--bold slide-in">Co oferujemy?</h1>
                 <div class="underline underline--mb slide-in"></div>
               </div>
-              <div class="services-content__text">
+              <div class="services-content__text appear">
 
-                <h2 class="title title--h2 title--uppercase title-small title--medium">
+                <h2 class="title title--h2 title--uppercase title-small title--medium appear-animation">
                   Wszystko czego potrzebujesz!
                 </h2>
-                <h2 class="title title--h2 title--uppercase title-small title--medium title--gray title-mb">
+                <h2 class="title title--h2 title--uppercase title-small title--medium title--gray title-mb appear-animation">
                   Z zakresu elektryki
                 </h2>
                 <p class="text slide-up">
@@ -58,7 +59,7 @@ onUnmounted(() => {
             </div>
           </template>
           <template #right>
-            <div class="image"></div>
+            <div class="image appear-animation"></div>
             <!-- <SectionImage /> -->
             <!-- <div class="image-wrapper"> -->
             <!-- <div class="rectangle rectangle--yellow"></div> -->
@@ -72,19 +73,19 @@ onUnmounted(() => {
       <div class="services-icon">
         <div class="services-icon__rect"></div>
         <SmallThunderIcon class="transform" />
-        <h2 class="title title--h2 title--bold">Prace elektryczne</h2>
+        <h2 class="title title--h2 title--bold appear-animation">Prace elektryczne</h2>
       </div>
-      <p class="text text--bold">Prace elektryczne:</p>
+      <p class="text text--bold slide-in">Prace elektryczne:</p>
       <ul>
-        <li class="text">
+        <li class="text slide-in">
           Projektowanie, instalacja i konserwacja systemów elektrycznych w
           różnych budynkach.
         </li>
-        <li class="text">
+        <li class="text slide-in">
           Naprawa awarii elektrycznych oraz dostosowywanie instalacji do
           obowiązujących norm.
         </li>
-        <li class="text">
+        <li class="text slide-in">
           podłączanie urządzeń elektrycznych, montaż systemów alarmowych i
           automatyki.
         </li>
@@ -92,35 +93,35 @@ onUnmounted(() => {
       <div class="services-icon">
         <div class="services-icon__rect"></div>
         <ClearDayIcon class="transform" />
-        <h2 class="title title--h2 title--bold">Fotowoltaika</h2>
+        <h2 class="title title--h2 title--bold appear-animation">Fotowoltaika</h2>
       </div>
-      <p class="text text--bold">Instalacje Fotowoltaiczne:</p>
+      <p class="text text--bold slide-in">Instalacje Fotowoltaiczne:</p>
       <ul>
-        <li class="text">
+        <li class="text slide-in">
           Ocena miejsca instalacji, projektowanie i montaż paneli
           fotowoltaicznych.
         </li>
-        <li class="text">
+        <li class="text slide-in">
           nstalacja inwertera oraz połączenia elektryczne między panelami a
           systemem energetycznym.
         </li>
-        <li class="text">
+        <li class="text slide-in">
           Testowanie, uruchamianie i konserwacja systemu fotowoltaicznego.
         </li>
       </ul>
       <div class="services-icon">
         <div class="services-icon__rect"></div>
         <HeatIcon class="transform" />
-        <h2 class="title title--h2 title--bold">Pompy ciepła</h2>
+        <h2 class="title title--h2 title--bold appear-animation">Pompy ciepła</h2>
       </div>
-      <p class="text text--bold">Montaż Pomp Ciepła:</p>
+      <p class="text text--bold slide-in">Montaż Pomp Ciepła:</p>
       <ul>
-        <li class="text">
+        <li class="text slide-in">
           Ocena miejsca montażu pompy ciepła i podłączenie do źródła
           zasilania.
         </li>
-        <li class="text">Montaż sterownika i integracja z systemem grzewczym budynku.</li>
-        <li class="text">
+        <li class="text slide-in">Montaż sterownika i integracja z systemem grzewczym budynku.</li>
+        <li class="text slide-in">
           Prace na instalacji elektrycznej, testowanie, uruchamianie i
           utrzymanie pompy ciepła.
         </li>
@@ -128,28 +129,28 @@ onUnmounted(() => {
       <div class="services-icon">
         <div class="services-icon__rect"></div>
         <AvgPaceIcon class="transform" />
-        <h2 class="title title--h2 title--bold">Pomiary</h2>
+        <h2 class="title title--h2 title--bold appear-animation">Pomiary</h2>
       </div>
-      <p class="text text--bold">Pomiary Ogólne:</p>
-      <ul>
+      <p class="text text--bold slide-in">Pomiary Ogólne:</p>
+      <ul class="slide-in">
         <li class="text">Pomiar oporu izolacji</li>
         <li class="text">Pomiar rezystancji uziemienia</li>
         <li class="text">Pomiar napięcia i prądu</li>
       </ul>
-      <p class="text text--bold">Pomiary Instalacji Elektrycznych:</p>
-      <ul>
+      <p class="text text--bold slide-in">Pomiary Instalacji Elektrycznych:</p>
+      <ul class="slide-in">
         <li class="text">Pomiar impedancji pętli zwarcia</li>
         <li class="text">Pomiar napięcia skokowego</li>
         <li class="text">Kontrola parametrów ochronnych</li>
       </ul>
-      <p class="text text--bold">Pomiary Oświetlenia:</p>
-      <ul>
+      <p class="text text--bold slide-in">Pomiary Oświetlenia:</p>
+      <ul class="slide-in">
         <li class="text">Pomiar natężenia światła</li>
         <li class="text">Pomiar mocy oświetlenia</li>
         <li class="text">Diagnostyka i poprawa efektywności energetycznej oświetlenia</li>
       </ul>
-      <p class="text text--bold">Pomiary Aparatury Elektrycznej:</p>
-      <ul>
+      <p class="text text--bold slide-in">Pomiary Aparatury Elektrycznej:</p>
+      <ul class="slide-in">
         <li class="text">Badanie stanu technicznego urządzeń</li>
         <li class="text">Pomiar izolacji transformatorów</li>
         <li class="text">Analiza skuteczności układów zabezpieczających</li>
@@ -157,16 +158,16 @@ onUnmounted(() => {
       <div class="services-icon">
         <div class="services-icon__rect"></div>
         <InstantMixIcon class="transform" />
-        <h2 class="title title--h2 title--bold">Rozdzielnice</h2>
+        <h2 class="title title--h2 title--bold appear-animation">Rozdzielnice</h2>
       </div>
-      <p class="text">
+      <p class="text appear-animation">
         Zaufaj profesjonalizmowi naszej firmy w zakresie składania rozdzielnic
         elektrycznych. Oferujemy kompleksowe usługi projektowania, montażu i
         konserwacji rozdzielnic, dostosowując się do indywidualnych potrzeb
         każdego klienta.
       </p>
-      <p class="text text--bold">Projektowanie Rozdzielnic:</p>
-      <ul>
+      <p class="text text--bold slide-in">Projektowanie Rozdzielnic:</p>
+      <ul class="slide-in">
         <li class="text">
           Indywidualne podejście do projektowania z uwzględnieniem specyfiki
           instalacji klienta.
@@ -175,16 +176,16 @@ onUnmounted(() => {
           Optymalizacja rozdzielnic pod kątem efektywności energetycznej.
         </li>
       </ul>
-      <p class="text text--bold">Montaż Rozdzielnic:</p>
-      <ul>
+      <p class="text text--bold slide-in">Montaż Rozdzielnic:</p>
+      <ul class="slide-in">
         <li class="text">Montaż rozdzielnic niskonapięciowych i średnionapięciowych.</li>
         <li class="text">
           Przygotowanie instalacji pod rozdzielnie, włączając w to
           okablowanie.
         </li>
       </ul>
-      <p class="text text--bold">Modernizacja Istniejących Rozdzielnic:</p>
-      <ul>
+      <p class="text text--bold slide-in">Modernizacja Istniejących Rozdzielnic:</p>
+      <ul class="slide-in">
         <li class="text">
           Diagnoza istniejących rozdzielnic pod kątem zgodności z normami.
         </li>
@@ -193,8 +194,8 @@ onUnmounted(() => {
           bezpieczeństwa.
         </li>
       </ul>
-      <p class="text text--bold">Konserwacja i Serwis:</p>
-      <ul>
+      <p class="text text--bold slide-in">Konserwacja i Serwis:</p>
+      <ul class="slide-in">
         <li class="text">
           egularna konserwacja rozdzielnic w celu zapewnienia ich
           niezawodności.
@@ -202,7 +203,7 @@ onUnmounted(() => {
         <li class="text">Szybka interwencja w przypadku awarii.</li>
       </ul>
     </div>
-    <div class="container container--padding-b">
+    <div class="container container--padding-b appear-animation">
       <h2 class="title title--h2 title--bold">Dlaczego my?</h2>
       <div class="underline underline--mb"></div>
       <p class="text text--bold">Dlaczego Wybrać Nasze Usługi:</p>
@@ -230,7 +231,7 @@ onUnmounted(() => {
         </li>
       </ul>
     </div>
-    <div class="container container--padding-b">
+    <div class="container container--padding-b appear-animation">
       <h2 class="title title--h2 title--bold">Skontaktuj się z nami!</h2>
       <div class="underline underline--mb"></div>
       <p class="text">

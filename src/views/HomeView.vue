@@ -1,6 +1,6 @@
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue';
-import { useScrollAnimations, clearScrollTriggers, slideInFrom } from '@/assets/utils/useScrollAnimations';
+import { useScrollAnimations, clearScrollTriggers, slideInFrom, appearAnimation } from '@/assets/utils/useScrollAnimations';
 import CustomButton from "@/components/CustomButton.vue";
 import TunderIcon from "../assets/svg/TunderIcon.vue";
 import LogoElectro from "../assets/svg/LogoElectro.vue";
@@ -63,6 +63,8 @@ onMounted(() => {
   // Wywołanie funkcji z selektorem elementów do animacji
   useScrollAnimations('.slide-up');
   slideInFrom('.slide-in');
+  appearAnimation('.appear-animation');
+
 });
 
 onUnmounted(() => {
@@ -83,7 +85,7 @@ onUnmounted(() => {
           Usługi elektryczne na najwyższym poziomie
         </h1>
         <router-link to="/contact">
-          <CustomButton class="bg-granat contact-button-grid">Skontaktuj się</CustomButton>
+          <CustomButton class="bg-granat contact-button-grid appear-animation">Skontaktuj się</CustomButton>
         </router-link>
       </div>
     </div>
@@ -106,12 +108,12 @@ onUnmounted(() => {
               elektryka doświadczenie.
             </p>
             <router-link to="/services">
-              <CustomButton class="bg-granat">Sprawdź naszą ofertę</CustomButton>
+              <CustomButton class="bg-granat appear-animation">Sprawdź naszą ofertę</CustomButton>
             </router-link>
           </div>
         </template>
         <template #right>
-          <div class="image image--deskop-visible">
+          <div class="image image--deskop-visible appear-animation">
             <LogoElectro />
           </div>
         </template>
@@ -176,21 +178,23 @@ onUnmounted(() => {
       </DynamicGrid>
     </div>
     <div class="container container--padding-b">
-      <h2 class="main-title main-title--small-size slide-in">Nasze Realizacje</h2>
-      <div class="slide-up" style="width: 100%; ">
-        <SwiperSlider :slides="slides" @image-click="openGallery" />
+        <h2 class="main-title main-title--small-size slide-in">Nasze Realizacje</h2>
+        <div class="appear-animation" style="width: 100%; ">
+          <SwiperSlider :slides="slides" @image-click="openGallery" />
+        </div>
       </div>
-    </div>
-    <div class="container container--padding-b">
-      <h2 class="title title--h2 title--bold">Skontaktuj się z nami!</h2>
-      <div class="underline underline--mb"></div>
-      <p class="text">
-        Jesteśmy do Twojej dyspozycji od poniedziałku do piątku w godzinach
-        8.00-16.00
-      </p>
-      <router-link to="/contact">
-        <CustomButton class="bg-granat">Skontaktuj się</CustomButton>
-      </router-link>
+      <div class="container container--padding-b">
+        <div class="appear-animation">
+        <h2 class="title title--h2 title--bold">Skontaktuj się z nami!</h2>
+        <div class="underline underline--mb"></div>
+        <p class="text">
+          Jesteśmy do Twojej dyspozycji od poniedziałku do piątku w godzinach
+          8.00-16.00
+        </p>
+        <router-link to="/contact">
+          <CustomButton class="bg-granat">Skontaktuj się</CustomButton>
+        </router-link>
+      </div>
     </div>
     <FooterElektro />
   </div>

@@ -1,6 +1,6 @@
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue';
-import { useScrollAnimations, clearScrollTriggers, slideInFrom } from '@/assets/utils/useScrollAnimations';
+import { useScrollAnimations, clearScrollTriggers, slideInFrom, appearAnimation } from '@/assets/utils/useScrollAnimations';
 import CustomButton from "@/components/CustomButton.vue";
 import FooterElektro from "../components/FooterElektro.vue";
 import TheTimeLine from "@/components/TheTimeLine.vue";
@@ -51,6 +51,7 @@ const timeLineData = ref([
 onMounted(() => {
   useScrollAnimations('.slide-up');
   slideInFrom('.slide-in');
+  appearAnimation('.appear-animation');
 });
 
 onUnmounted(() => {
@@ -97,7 +98,7 @@ onUnmounted(() => {
           </div>
         </template>
         <template #right>
-          <div class="image"></div>
+          <div class="image appear-animation"></div>
           <!-- <div class="image-wrapper"> -->
           <!-- <div class="rectangle rectangle--yellow"></div> -->
           <!-- <img src="../assets/img/b13d1eb03bc2495b181658cfbf381fad.jpeg" alt="services-hero-image" /> -->
@@ -113,7 +114,7 @@ onUnmounted(() => {
 
       <SplitSection>
         <template #left>
-          <img class="our-team-img" src="../assets/img/employee.webp" alt="boss-image" />
+          <img class="our-team-img appear-animation" src="../assets/img/employee.webp" alt="boss-image" />
         </template>
         <template #right>
           <div class="our-team-content">
@@ -130,7 +131,7 @@ onUnmounted(() => {
 
       <SplitSection>
         <template #right>
-          <img class="our-team-img" src="../assets/img/bass.webp" alt="worker-image" />
+          <img class="our-team-img appear-animation" src="../assets/img/bass.webp" alt="worker-image" />
         </template>
         <template #left>
           <div class="our-team-content">
@@ -157,7 +158,7 @@ onUnmounted(() => {
       </div>
     </div>
     <div class="container container--padding-b">
-      <div class="video">
+      <div class="video slide-up">
         <iframe width="100%" height="300px" src="https://www.youtube.com/embed/-XTUbvmptRs?si=z8r-yTsvTWpsaNXQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
       </div>
     </div>
