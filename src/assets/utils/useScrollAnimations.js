@@ -90,6 +90,30 @@ ScrollTrigger.matchMedia({
   });
 }
 
+// APPEAR ANIMATION FUNCTION
+export function appearAnimation(selector) {
+ const appearElements = document.querySelectorAll(selector);
+
+ appearElements.forEach((element, index) => {
+   gsap.fromTo(
+     element,
+     { opacity: 0 },
+     {
+       x: 0,
+       opacity: 1,
+       duration: 1.5,
+       stagger: 0.5,
+       scrollTrigger: {
+         trigger: element,
+         start: 'top 70%',
+        //  markers: true,
+         id: `appear-${index + 1}`,
+       },
+     }
+   );
+ });
+}
+
 /**
  * Funkcja do czyszczenia instancji ScrollTrigger
  */
