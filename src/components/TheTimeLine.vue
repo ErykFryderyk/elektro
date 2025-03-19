@@ -1,7 +1,69 @@
 <script setup>
+import { onMounted, onUnmounted, ref } from 'vue';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
+
 defineProps({
   data: Array,
 });
+onMounted(() => {
+  // Pobieramy wszystkie elementy z klasą 'box'
+  const boxes = document.querySelectorAll('.img');
+  const startPoint = document.querySelector('.timeline');
+  ScrollTrigger.matchMedia({
+    '(max-width: 1199px)': function () {
+      // Animacja dla dużych ekranów
+      boxes.forEach((box, index) => {
+        gsap.fromTo(box,
+          { opacity: 0 },
+          {
+            x: 0,
+            opacity: 1,
+            duration: 1.5,
+            stagger: 0.5,
+            scrollTrigger: {
+              trigger: box,
+              start: 'bottom 85%',
+              //  markers: true,
+              id: `appear-${index + 1}`,
+            },
+          }
+        );
+      });
+    },
+    // Warunek dla dużych ekranów (np. min-width: 768px)
+    '(min-width: 1200px)': function () {
+      boxes.forEach((box, index) => {
+        gsap.fromTo(
+          box,
+          {
+            y: '+=20',
+            opacity: 0,
+          },
+          {
+            y: 0,
+            opacity: 1,
+            duration: 1,
+            delay: index * 0.3,
+            scrollTrigger: {
+              trigger: startPoint,
+              start: 'top 50%',
+              // markers: true,
+              id: `large-${index + 1}`,
+            },
+          }
+        );
+      });
+    },
+  });
+});
+
+onUnmounted(() => {
+  ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+});
+
 </script>
 <template>
   <div class="timeline">
@@ -15,7 +77,7 @@ defineProps({
         <p class="desc">
           {{ item.desc }}
         </p>
-        <img class="img" :src="'img/'+ item.srcImg" :alt="'image-'+item.title" />
+        <img class="img" :src="'img/' + item.srcImg" :alt="'image-' + item.title" />
       </li>
     </ul>
   </div>
@@ -197,18 +259,20 @@ ul li {
   .subtitle {
     font-size: 18px;
   }
+
   .desc {
     font-size: 16px;
     margin-left: 33px;
     margin-bottom: 0px;
   }
-  
+
   .underline {
     position: absolute;
     width: 30px;
     height: 55%;
     z-index: -1;
   }
+
   .img {
     object-fit: fill;
   }
