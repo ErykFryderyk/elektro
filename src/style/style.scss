@@ -230,7 +230,9 @@ button {
   &--bold {
     font-weight: bold;
   }
-  
+  &--justify {
+    text-align: justify;
+  }
 }
 
 .underline {
