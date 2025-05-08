@@ -48,6 +48,8 @@ const timeLineData = ref([
   },
 ]);
 
+
+//animation 
 onMounted(() => {
   useScrollAnimations('.slide-up');
   slideInFrom('.slide-in');
@@ -113,13 +115,15 @@ onUnmounted(() => {
       <h1 class="main-title main-title--small-size slide-in">Nasz skład</h1>
 
       <SplitSection>
-        <template #left>
-          <img class="our-team-img appear-animation" src="../assets/img/employee.webp" alt="boss-image" />
-        </template>
         <template #right>
+          <div class="our-team-image-wrapper">
+            <img class="our-team-img image appear-animation" src="../assets/img/elektryk-elektro-boss.png" alt="boss-image"/>
+          </div>
+        </template>
+        <template #left>
           <div class="our-team-content">
             <h3 class="title title--h2 slide-up">Rafał</h3>
-            <p class="text text--mb-40 slide-up">
+            <p class="text text--mb-40 text--justify slide-up">
               Jestem założycielem oraz właścicielem firmy <b>Elektro</b>, jednego z wiodących przedsiębiorstw
               elektrycznych w naszym regionie. Zaczynałem ponad 15 lat temu jako elektryk, pracując w różnych firmach i
               zdobywając doświadczenie. Dziś prowadzę dynamicznie rozwijającą się firmę, która zatrudnia kilku
@@ -130,19 +134,19 @@ onUnmounted(() => {
       </SplitSection>
 
       <SplitSection>
-        <template #right>
-          <img class="our-team-img appear-animation" src="../assets/img/bass.webp" alt="worker-image" />
-        </template>
         <template #left>
+          <div class="our-team-image-wrapper our-team-image-wrapper--reverse">
+            <img class="our-team-img our-team-img--reverse appear-animation" src="../assets/img/elektryk-elektro-employee.png" alt="worker-image" />
+          </div>
+        </template>
+        <template #right>
           <div class="our-team-content">
-            <h3 class="title title--h2">Ryszard</h3>
-            <p class="text text--mb-40">
+            <h3 class="title title--h2 slide-up">Ryszard</h3>
+            <p class="text text--mb-40 text--justify slide-up">
               Jestem Ryszard i jestem jednym z pracowników w firmie Elektro. Pracuję tutaj już od kilku lat i mogę
               śmiało powiedzieć, że to miejsce, w którym naprawdę można się rozwijać i pracować z najlepszymi
-              specjalistami w branży.<br><br>
-              Na co dzień zajmuję się montażem i serwisem instalacji elektrycznych w budynkach mieszkalnych, biurowych i
-              przemysłowych. Pracujemy z nowoczesnymi technologiami – od klasycznych instalacji, przez systemy
-              automatyki budynkowej, aż po fotowoltaikę i inteligentne zarządzanie energią.
+              specjalistami w branży. Na co dzień zajmuję się montażem i serwisem instalacji elektrycznych w budynkach mieszkalnych, biurowych i
+              przemysłowych.
             </p>
           </div>
         </template>
@@ -267,13 +271,64 @@ h2 {
   height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: end;
+  justify-content: center;
+
+  &--reverse {
+    text-align: right;
+  }
+}
+
+.our-team-image-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+
+  &:nth-child(1) {
+    margin-bottom: 50px;
+  }
+  
+  &::before {
+    content: "";
+    position: absolute;
+    background: #f0c85e;
+    bottom: 0;
+    height: 330px;
+    width: 12px;
+    right: -18px;
+    z-index: 1;
+  }
+  &::after {
+    content: "";
+    position: absolute;
+    background: #f0c85e;
+    bottom: 0;
+    height: 12px;
+    width: 330px;
+    right: -18px;
+    z-index: 1;
+  }
+
+  &--reverse {
+    &::before {
+      left: -12px;
+      bottom: 0;
+    }
+    &::after {
+      bottom: 0;
+      left: 0;
+    }
+  }
 }
 
 .our-team-img {
   width: 100%;
-  max-width: 545px;
   height: 100%;
   object-fit: cover;
+  clip-path: polygon(10% 0, 100% 0%, 100% 100%, 10% 100%, 0% 50%);
+
+  &--reverse {
+    clip-path: polygon(0% 0%, 90% 0%, 100% 50%, 90% 100%, 0% 100%);
+  }
 }
 </style>
