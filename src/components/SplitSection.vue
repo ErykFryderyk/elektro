@@ -54,9 +54,9 @@ defineProps({
   }
 }
 
-@media (max-width: 992px) {
+/* @media (max-width: 992px) {
   .split-section {
     flex-direction: column; 
   }
-}
+} */
 </style>
